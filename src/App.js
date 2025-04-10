@@ -39,7 +39,7 @@ const App = () => {
     <HashRouter>
       <Suspense
         fallback={
-          <div className="pt-3 text-center">
+          <div className="pt-3 -center">
             <CSpinner color="primary" variant="grow" />
           </div>
         }

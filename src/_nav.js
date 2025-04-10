@@ -15,21 +15,29 @@ import {
   cilStar,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
+import employees from './views/pages/employees/employees'
 
 const _nav = [
   {
     component: CNavItem,
-    name: 'Dashboard',
+    name: 'dashboard',
     to: '/dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     badge: {
       color: 'info',
-      text: 'NEW',
+       text:'NEW',
     },
   },
+//creado
+  {component:CNavItem,
+    name: 'employees',
+    to:'/employees',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
+
   {
     component: CNavTitle,
-    name: 'Theme',
+    name: 'hola',
   },
   {
     component: CNavItem,
@@ -142,7 +150,7 @@ const _nav = [
         href: 'https://coreui.io/react/docs/components/smart-table/',
         badge: {
           color: 'danger',
-          text: 'PRO',
+         text: 'PRO',
         },
       },
       {
@@ -176,7 +184,7 @@ const _nav = [
         href: 'https://coreui.io/react/docs/components/virtual-scroller/',
         badge: {
           color: 'danger',
-          text: 'PRO',
+         text: 'PRO',
         },
       },
     ],
