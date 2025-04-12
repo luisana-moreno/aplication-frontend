@@ -25,8 +25,9 @@ body {
 
 .sidebar-brand-full {
   margin-left: 3px;
-} //color de fondo titulo 
-.sidebar{background-color: rgb(241, 91, 45);}
+}
+ //color de fondo titulo 
+.sidebar{background-color:  rgb(248, 126, 45);}
 
 .sidebar-header {
   .nav-underline-border {
@@ -44,7 +45,7 @@ body {
 .sidebar-toggler {
   margin-inline-start: auto;
 }
-.sidebar-toggler{background-color: rgb(241, 91, 45);}//color de la flechita
+.sidebar-toggler{background-color: rgb(248, 126, 45);}//color de la flechita
 
 .sidebar-narrow,
 .sidebar-narrow-unfoldable:not(:hover) {
@@ -58,7 +59,7 @@ body {
 
 .header > .container-fluid + .container-fluid {
   min-height: 3rem;
-  background-color: rgb(241, 91, 45);
+  background-color:  rgb(248, 126, 45);
 }
 .header{background-color: rgb(255, 255, 255)}
 
@@ -79,29 +80,56 @@ body {
   }
 
 }
-// agregar 
+// agregado 
 
 .nav-link:hover{
   background-color: rgb(11, 69, 35) !important;
 }
 
 .login-color{
-  background-color: rgb(112, 112, 181);
+  background-color: rgb(248, 126, 45);
 }
 
 .login-background{
-  background:linear-gradient(rgba(15, 11, 11, 0.768), rgba(0, 0, 0, 0.916)), url('src/assets/images/background.jpg');
+  background:linear-gradient(rgba(255, 255, 255, 0.768), rgba(255, 255, 255, 0.768)), url('src/assets/images/background.jpg');
   background-size: 'cover';
   background-Position: 'center';
 }
 
 .login-card{
-  background: url('src/assets/images/background.jpg');
+  background: url('src/assets/images/toro.jpg');
   background-size: 'cover';
   background-Position: 'center';
-  width: 100%;
+  
 }
 
+.register-color{
+  background-color:  rgb(248, 126, 45)
+}
 .button-color{
-  background-color: rgb(241, 91, 45);
+  background-color:  rgb(248, 126, 45);
+
+}
+.button-color-login{
+  background-color: rgb(11, 69, 35);
+}
+
+.employees-name{
+  border: 3px solid rgb(248, 126, 45); // Cambia el color 
+}
+
+.modal-employee{
+  background-color:  rgb(248, 126, 45);
+
+}
+
+.typography-color-title{
+  color:rgb(11, 69, 35);
+}
+
+.typography-color{
+  color: white;
+}
+.simplebar-content .active{
+  background-color: rgb(11, 69, 35)!important;
 }
