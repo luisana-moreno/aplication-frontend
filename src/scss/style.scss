@@ -109,13 +109,21 @@ body {
 .button-color{
   background-color:  rgb(248, 126, 45);
 
+.button-color-b{
+  background-color:  rgb(252, 251, 251);
+}
+
 }
 .button-color-login{
   background-color: rgb(11, 69, 35);
 }
 
+.employees-border{
+  border: 3px solid rgb(248, 126, 45); 
+}
+ 
 .employees-name{
-  border: 3px solid rgb(248, 126, 45); // Cambia el color 
+  border: 3px solid rgb(248, 126, 45); 
 }
 
 .modal-employee{
@@ -123,8 +131,16 @@ body {
 
 }
 
+.text-green{
+  color:rgb(11, 69, 35)!important;
+}
+
 .typography-color-title{
   color:rgb(11, 69, 35);
+}
+
+.typography-color-orange{
+  color: rgb(248, 126, 45);
 }
 
 .typography-color{
@@ -133,3 +149,4 @@ body {
 .simplebar-content .active{
   background-color: rgb(11, 69, 35)!important;
 }
+
