@@ -91,13 +91,18 @@ body {
 }
 
 .login-background{
-  background:linear-gradient(rgba(255, 255, 255, 0.768), rgba(255, 255, 255, 0.768)), url('src/assets/images/background.jpg');
-  background-size: 'cover';
-  background-Position: 'center';
-}
+    background: linear-gradient(rgba(255, 255, 255, 0.768), rgba(255, 255, 255, 0.932)),url('src/assets/images/finca/login2.jpeg') no-repeat center center; /* Imagen centrada */
+    background-size: cover; /* Escala la imagen para cubrir todo el contenedor */
+    height: 100vh; /* Asegura que el fondo ocupe toda la altura de la ventana */
+    width: 100%; /* Asegura que el fondo ocupe todo el ancho */
+    display: flex; /* Para centrar contenido dentro del fondo */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    overflow: hidden; /* Evita que el contenido desborde */
+  }
 
 .login-card{
-  background: url('src/assets/images/toro.jpg');
+  background: url('src/assets/images/finca/toro.jpg');
   background-size: 'cover';
   background-Position: 'center';
   
@@ -118,15 +123,15 @@ body {
   background-color: rgb(11, 69, 35);
 }
 
-.employees-border{
+.modal-border{
   border: 3px solid rgb(248, 126, 45); 
 }
  
-.employees-name{
+.modal-name{
   border: 3px solid rgb(248, 126, 45); 
 }
 
-.modal-employee{
+.modal-module{
   background-color:  rgb(248, 126, 45);
 
 }
@@ -136,7 +141,7 @@ body {
 }
 
 .typography-color-title{
-  color:rgb(11, 69, 35);
+  color:rgb(11, 69, 35) !important;
 }
 
 .typography-color-orange{
@@ -144,9 +149,73 @@ body {
 }
 
 .typography-color{
-  color: white;
+  color: white !important;
 }
 .simplebar-content .active{
   background-color: rgb(11, 69, 35)!important;
 }
 
+
+// Boton Verde
+.button-no-hover-green {
+  background-color:  rgb(11, 69, 35) !important;/* Color de fondo inicial */
+  color: white !important; /* Color del texto */
+  border: 1px solid  rgb(11, 69, 35) !important; /* Borde del botón */
+  transition: none !important; /* Desactiva las transiciones */
+}
+
+.button-no-hover-green:hover,
+.button-no-hover-green:focus,
+.button-no-hover-green:active {
+  background-color:  rgb(17, 102, 52) !important;  /* Mantén el color de fondo */
+  color: white !important; /* Mantén el color del texto */
+  border-color:  rgb(17, 102, 52) !important; /* Mantén el color del borde */
+  box-shadow: none !important;/* Elimina el efecto de sombra */
+}
+
+
+// Boton Naranja
+.button-no-hover-orange {
+  background-color:  rgb(248, 126, 45)!important;/* Color de fondo inicial */
+  color: white !important; /* Color del texto */
+  border: 1px solid  rgb(248, 126, 45) !important; /* Borde del botón */
+  transition: none !important; /* Desactiva las transiciones */
+}
+
+.button-no-hover-orange:hover,
+.button-no-hover-orange:focus,
+.button-no-hover-orange:active {
+  background-color:rgb(249,149,83)  !important;  /* Mantén el color de fondo */
+  color: white !important; /* Mantén el color del texto */
+  border-color: rgb(249,149,83)  !important; /* Mantén el color del borde */
+  box-shadow: none !important;/* Elimina el efecto de sombra */
+}
+
+
+//calendario
+// Cambiar el color de las fechas del calendario
+.fc .fc-daygrid-day {
+  color: #ff00dd !important; /* Cambia el color de la letra de los días */
+}
+
+// Cambiar el color de los encabezados de los días (Lunes, Martes, etc.)
+.fc .fc-col-header-cell {
+  color: #28a745 !important; /* Cambia el color de los encabezados */
+  font-weight: bold; /* Opcional: hacer el texto en negrita */
+}
+
+// Cambiar el color de los números de los días
+.fc .fc-daygrid-day-number {
+  color: #dc3545 !important; /* Cambia el color de los números de los días */
+}
+
+// Cambiar el color de los eventos
+.fc .fc-event {
+  color: #ffffff !important; /* Cambia el color del texto de los eventos */
+  background-color: #17a2b8 !important; /* Cambia el color de fondo de los eventos */
+}
+
+// Cambiar el color de los días inactivos (fuera del mes actual)
+.fc .fc-day-other {
+  color: #6c757d !important; /* Cambia el color de los días inactivos */
+}

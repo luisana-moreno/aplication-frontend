@@ -22,101 +22,95 @@ const Login = () => {
   const [visible, setVisible] = useState(false)
   return (
 
-    <div 
+    <div
       className="login-background min-vh-100 d-flex flex-row align-items-center ">
       <CContainer>
-      <CRow 
-        className="justify-content-center">
-      <CCol md={8}>
-    <CCardGroup>
-  <CCard 
-        className="login-color p-4">
-      <CCardBody>
-      <CForm>
-        <h1
-          className='typography-color-title'>
-          Login
-        </h1>
+        <CRow
+          className="justify-content-center">
+          <CCol md={8}>
+            <CCardGroup>
+              <CCard
+                className="login-color p-4">
+                <CCardBody>
+                  <CForm>
+                    <h1
+                      className='typography-color-title'>
+                      Login
+                    </h1>
 
-        <p 
-          className="typography-color">
-          Sign In to your account
-        </p>
+                    <p
+                      className="typography-color">
+                      Sign In to your account
+                    </p>
 
-    <CInputGroup 
-        className="mb-3">
-      <CInputGroupText>
-      <CIcon 
-        icon={cilUser} />
-      </CInputGroupText>
+                    <CInputGroup
+                      className="mb-3">
+                      <CInputGroupText>
+                        <CIcon
+                          icon={cilUser} />
+                      </CInputGroupText>
 
-    <CFormInput 
-        placeholder="email" 
-        autoComplete="email" />
-    </CInputGroup>
+                      <CFormInput
+                        placeholder="email"
+                        autoComplete="email" />
+                    </CInputGroup>
 
-    <CInputGroup 
-        className="mb-4">
-      <CInputGroupText>
-      <CIcon 
-        icon={cilLockLocked} />
-      </CInputGroupText>
-     <CFormInput
-        type="password"
-        placeholder="Password"
-        autoComplete="current-password"
-      />
-    </CInputGroup>
+                    <CInputGroup
+                      className="mb-4">
+                      <CInputGroupText>
+                        <CIcon
+                          icon={cilLockLocked} />
+                      </CInputGroupText>
+                      <CFormInput
+                        type="password"
+                        placeholder="Password"
+                        autoComplete="current-password"
+                      />
+                    </CInputGroup>
 
-    <CRow>
-      <CCol xs={6}> 
-        <Link to="/dashboard">
-          <CButton 
-            className="button-color-login px-4">
-            <h6 
-              className='typography-color'>
-              Login
-            </h6>
-          </CButton>
-        </Link>
-      </CCol>
-       
-      <CCol 
-        xs={6} 
-        className="text-right">
+                    <CRow>
+                      <CCol xs={6}>
+                        <Link to="/dashboard">
+                          <CButton
+                            className="button-no-hover-green text-white px-4">
+                              Login
+                          </CButton>
+                        </Link>
+                      </CCol>
 
-        <CButton 
-          color="link" 
-          className="px-0" 
-          onClick={()=> setVisible(!visible)}>
-          Forgot password?
-        </CButton>
-      </CCol>
-    </CRow>
-  </CForm>
-  </CCardBody>
- </CCard>
+                      <CCol
+                        xs={6}
+                        className="text-right">
 
-              <CCard 
+                        <CButton
+                          color="link"
+                          className="px-0"
+                          onClick={() => setVisible(!visible)}>
+                          Forgot password?
+                        </CButton>
+                      </CCol>
+                    </CRow>
+                  </CForm>
+                </CCardBody>
+              </CCard>
+
+              <CCard
                 className="login-card text-white bg-primary py-5">
-                <CCardBody 
+                <CCardBody
                   className="text-center">
                   <div>
-                    <h2 
-                      className='typography-color-title'>
+                    <h2
+                      className='text-white'>
                       Register
                     </h2>
                     <p>
-                      holaaa
+                      Welcome to the Finca La Laguna management system. Please register to begin.
                     </p>
-                    <Link 
+                    <Link
                       to="/register">
-                      <CButton  
-                        className="button-color-login mt-3">
-                      <h6 
-                        className='typography-color'> 
+                      <CButton
+                        className="button-no-hover-green text-white mt-3">
                         Register Now!
-                      </h6>
                       </CButton>
                     </Link>
                   </div>
@@ -133,7 +127,7 @@ const Login = () => {
         aria-labelledby="LiveDemoExampleLabel"
       >
         <CModalHeader>
-          <CModalTitle 
+          <CModalTitle
             className='typography-color-title'>
             Recover your password
           </CModalTitle>
@@ -143,35 +137,29 @@ const Login = () => {
           <h6>
             Please enter your email to reset your password
           </h6>
-          <CInputGroup 
-            className="button-color mb-3"> 
-          <CInputGroupText>
-            <CIcon 
-              icon={cilUser} />
-          </CInputGroupText>
-           <CFormInput 
-            placeholder="email" 
-            autoComplete="email" />
-         </CInputGroup>
-          </CModalBody>
+          <CInputGroup
+            className="button-no-hover-green text-white  mb-3">
+            <CInputGroupText>
+              <CIcon
+                icon={cilUser} />
+            </CInputGroupText>
+            <CFormInput
+              placeholder="email"
+              autoComplete="email" />
+          </CInputGroup>
+        </CModalBody>
 
         <CModalFooter>
-          <CButton 
-            className='button-color-login'
+          <CButton
+            className='button-no-hover-green text-white '
             onClick={() => setVisible(false)}>
-            <h6 
-              className='typography-color'>
-              Close
-              </h6>
+                Close
           </CButton>
 
-          <CButton 
-            className='button-color-login'>
-           <h6 
-            className='typography-color'> 
-            Save changes
-          </h6>
-          </CButton> 
+          <CButton
+            className='button-no-hover-green text-white '>
+              Save changes
+          </CButton>
         </CModalFooter>
       </CModal>
     </div>
