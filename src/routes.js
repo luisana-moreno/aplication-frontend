@@ -54,6 +54,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 const Employee = React.lazy(()=> import('./views/pages/employees/employees'))
 const Users = React.lazy(() => import('./views/pages/users/users'))
 const Cattle = React.lazy(() => import('./views/pages/cattle/cattle'))
+const Vaccination = React.lazy(() => import('./views/pages/cattle/vaccination'))
 const Client = React.lazy(() => import('./views/pages/client/client'))
 const Finance = React.lazy(() => import('./views/pages/finance/finance'))
 const Inventory = React.lazy(() => import('./views/pages/inventory/inventory'))
@@ -109,6 +110,7 @@ const routes = [
   { path: '/employee', name: 'Employee', element: Employee},  
   { path: '/users', name: 'users' , element: Users},
   { path: '/cattle', name: 'cattle', element: Cattle},
+  { path: '/vaccination', name: 'vaccination', element: Vaccination},
   { path: '/client', name: 'client', element: Client},
   { path: '/finance', name: 'finance', element: Finance},
   { path: '/inventory', name: 'inventory', element: Inventory},

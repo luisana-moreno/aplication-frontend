@@ -1,6 +1,5 @@
 import React from 'react'
 
-import IconsImg from 'src/assets/images/icons.webp'
 
 const DocsIcons = () => (
   <div className="bg-warning bg-opacity-10 border border-2 border-warning rounded mb-4">
@@ -17,7 +16,6 @@ const DocsIcons = () => (
       <div className="col-md-auto col-12 mt-3 mt-lg-0">
         <a
           className="btn btn-warning text-nowrap text-white"
-          href="https://coreui.io/react/docs/components/icon/"
           target="_blank"
           rel="noopener noreferrer"
         >
