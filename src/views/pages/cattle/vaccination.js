@@ -18,6 +18,7 @@ import {
 const Vaccination = () => {
   const [visibleVaccination, setVisibleVaccination] = useState(false);
   const [selectedDate, setSelectedDate] = useState(''); // Estado para almacenar la fecha seleccionada
+  const [vaccinationEvent, setVaccinatioEvent]=useState([])
   const [formData, setFormData] = useState([
     {
     cattleId: '',
@@ -35,17 +36,10 @@ const Vaccination = () => {
     setSelectedDate(info.dateStr); // Establece la fecha seleccionada
     setVisibleVaccination(true); // Abre el modal
   };
-
-  // Manejar cambios en los inputs del formulario
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
   // Manejar el envío del formulario
   const handleSubmit = () => {
-    console.log('Form Data:', { ...formData, date: selectedDate });
-    setVisibleVaccination(false); // Cierra el modal
+    setVaccinatioEvent([...vaccinationEvent, { ...formData, date: selectedDate}])
+    setVisibleVaccination(false); // Cierra el modals
     setFormData({ cattleId: '', vaccineName: '', notes: '' }); // Limpia el formulario
   };
 
@@ -55,7 +49,9 @@ const Vaccination = () => {
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
         dateClick={handleDateClick}
-      />
+        eventContent={renderEventContent}
+        events={vaccinationEvent}
+        />
 
       <CModal
         alignment="center"
@@ -77,7 +73,7 @@ const Vaccination = () => {
               type="text"
               name="cattleId"
               value={formData.cattleId}
-              onChange={handleInputChange}
+              onChange={(e)=>setFormData({...formData, cattleId: e.target.value})}
             />
             <CFormInput
               className="modal-name mb-3"
@@ -85,7 +81,7 @@ const Vaccination = () => {
               type="text"
               name="employeeId"
               value={formData.employeeId}
-              onChange={handleInputChange}
+              onChange={(e)=>setFormData({...formData, employeeId: e.target.value})}
             />
             <CFormInput
               className="modal-name mb-3"
@@ -93,7 +89,7 @@ const Vaccination = () => {
               type="text"
               name="diagnosis"
               value={formData.diagnosis}
-              onChange={handleInputChange}
+              onChange={(e)=>setFormData({...formData, employeeId: e.target.value})}
             />
             <CFormInput
               className="modal-name mb-3"
@@ -101,7 +97,7 @@ const Vaccination = () => {
               type="text"
               name="treatament" 
               value={formData.treatament}
-              onChange={handleInputChange}
+              onChange={(e)=>setFormData({...formData, treatament: e.target.value})}
             />
             <CFormInput
               className="modal-name mb-3"
@@ -109,7 +105,7 @@ const Vaccination = () => {
               placeholder="Vaccine Name"
               name="vaccine"
               value={formData.vaccine}
-              onChange={handleInputChange}
+              onChange={(e)=>setFormData({...formData, vaccine: e.target.value})}
             />
             <CFormInput
               className="modal-name mb-3"
@@ -117,7 +113,7 @@ const Vaccination = () => {
               placeholder="Date Vaccination"
               name="date_vaccination"
               value={formData.date_vaccination}
-              onChange={handleInputChange}
+              onChange={(e)=>setFormData({...formData, date_vaccination: e.target.value})}
             />
           </CForm>
         </CModalBody>
@@ -137,5 +133,14 @@ const Vaccination = () => {
     </>
   );
 };
+
+function renderEventContent(eventInfo) {
+  return(
+    <>
+
+      <b>{eventInfo.vaccinationEvent.target.vaccine}</b>
+    </>
+  )
+}
 
 export default Vaccination;

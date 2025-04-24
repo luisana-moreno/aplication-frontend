@@ -7,8 +7,6 @@ import {
     cilWallet,
     cilCalendar,
     cilMobile,
-    cilLocationPin,
-    cilContact,
     cilPencil,
 } from '@coreui/icons'
 import {
@@ -34,6 +32,7 @@ import {
     CModalFooter,
     CModalTitle,
 } from '@coreui/react';
+import { color } from 'chart.js/helpers';
 const SectionOne = ({ addCattle, setAddCattle }) =>
     <div>
         <CRow
@@ -45,273 +44,247 @@ const SectionOne = ({ addCattle, setAddCattle }) =>
             <CCol md={6}>
                 <CFormInput
                     className="modal-name"
-                    placeholder="First Name"
-                    aria-label="First Name"
-                    value={addCattle.firts_name}
-                    onChange={(e) => setAddCattle({ ...addCattle, firts_name: e.target.value })}
+                    placeholder="cattle Number"
+                    aria-label="cattle Number"
+                    value={addCattle.cattle_Number}
+                    onChange={(e) => setAddCattle({ ...addCattle, cattle_Number: e.target.value })}
                 />
                 <small
                     className="text-muted">
-                    Please add your firts name.
+                    Please add cattle number.
                 </small>
             </CCol>
 
             <CCol md={6}>
-                <CFormInput
+                
+                <CFormSelect
                     className="modal-name"
-                    placeholder="Middle Name"
-                    aria-label="Middle Name"
-                    value={addCattle.Middle_Name}
-                    onChange={(e) => setAddCattle({ ...addCattle, Middle_Name: e.target.value })}
-                />
-
+                    placeholder="Breed Bovine"
+                    aria-label="Breed Bovine"
+                    value={addCattle.breed_Bovine}
+                    onChange={(e) => setAddCattle({ ...addCattle, breed_Bovine: e.target.value })}
+                >
+                <option value={''}>Breed Bovine</option>
+                <option value={'Holstein'}>Holstein</option>
+                <option value={'Jersey'}>Jersey</option>
+                <option value={'Gyrolandas'}>Gyrolandas</option>
+                <option value={'Carora'}>Carora</option>
+                <option value={'Gyrhol'}>Gyrhol</option>
+                </CFormSelect>
                 <small
                     className="text-muted">
-                    Please add your middle name.
+                    Please add breed bovine.
                 </small>
             </CCol>
         </CRow>
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
-                    placeholder="First Last-Name"
-                    aria-label="First Last-Name"
-                    value={addCattle.Firts_Las_Name}
-                    onChange={(e) => setAddCattle({ ...addCattle, Firts_Las_Name: e.target.value })} />
-                <small
-                    className="text-muted">
-                    Please add your firts last-name.
-                </small>
+                        className="modal-name"
+                        type="date"
+                        placeholder="Register Date of Birth"
+                        value={addCattle.Date_Birth}
+                        onChange={(e) => setAddCattle({ ...addCattle, Date_Birth: e.target.value })} />
+                    <small className="text-muted">
+                        Please add ate of Birth.
+                    </small>
             </CCol>
-
             <CCol md={6}>
-                <CFormInput
+                <CFormSelect
                     className="modal-name"
-                    placeholder="Second Last-Name"
-                    aria-label="Second Last-Name"
-                    value={addCattle.Second_Las_Name}
-                    onChange={(e) => setAddCattle({ ...addCattle, Second_Las_Name: e.target.value })} />
+                    placeholder="Color"
+                    aria-label="Color"
+                    value={addCattle.color}
+                    onChange={(e) => setAddCattle({ ...addCattle, color: e.target.value })} 
+                    >
+                <option value={''}>Color</option>
+                <option value={'Black and White'}>Black and White</option>
+                <option value={'Red and White'}>Red and White</option>
+                <option value={'Dark brown and White'}>Dark brown and White</option>
+                </CFormSelect>
+                    
                 <small
                     className="text-muted">
-                    Please add your second last-name.
+                    Please add cattle color.
                 </small>
             </CCol>
         </CRow>
-
-    </div>;
-
-const SectionTwo = ({ addCattle, setAddCattle }) =>
-    <div>
         <CRow className="g-3 mt-2">
-            <h4 className='text-green mt-1 me-5'>
-                Personal Data
-            </h4>
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
-                    placeholder="Document Number"
-                    aria-label="Document Number"
-                    value={addCattle.Document_Number}
-                    onChange={(e) => setAddCattle({ ...addCattle, Document_Number: e.target.value })} />
-                <small
-                    className="text-muted">
-                    Please add your document number.
-                </small>
+                        className="modal-name"
+                        placeholder="Weigth"
+                        value={addCattle.weigth}
+                        onChange={(e) => setAddCattle({ ...addCattle, weigth: e.target.value })} />
+                    <small className="text-muted">
+                        Please add cattle weigth.
+                    </small>
             </CCol>
             <CCol md={6}>
-                <CFormInput
+                <CFormSelect
                     className="modal-name"
-                    type="date"
-                    placeholder="register"
-                    value={addCattle.Date_Birth}
-                    onChange={(e) => setAddCattle({ ...addCattle, Date_Birth: e.target.value })} />
-                <small className="text-muted">
-                    Please add your date of Birth.
+                    placeholder="Stage"
+                    aria-label="Stage"
+                    value={addCattle.stage}
+                    onChange={(e) => setAddCattle({ ...addCattle, stage: e.target.value })} 
+                    >
+                <option value={''}>Stage</option>
+                <option value={'Suckling calf'}>Suckling calf</option>
+                <option value={'Weaned calf'}>Weaned calf</option>
+                <option value={'Calves'}>Calves</option>
+                <option value={'Heifers'}>Heifers</option>
+                <option value={'Cows'}>Cows</option>
+                </CFormSelect>
+                <small
+                    className="text-muted">
+                    Please add cattle stage.
                 </small>
             </CCol>
         </CRow>
-        <CRow className=" g-3 mt-2">
-
+        <CRow className="g-3 mt-2">
             <CCol md={6}>
-                <CFormInput
-                    className="modal-name"
-                    placeholder="Phone"
-                    aria-label="Phone"
-                    value={addCattle.Phone}
-                    onChange={(e) => setAddCattle({ ...addCattle, Phone: e.target.value })} />
-                <small
-                    className="text-muted">
-                    Please add your phone.
-                </small>
-
-            </CCol>
-
-            <CCol md={6}>
-                <CFormInput
-                    className="modal-name"
-                    placeholder="Address"
-                    aria-label="Address"
-                    value={addCattle.Address}
-                    onChange={(e) => setAddCattle({ ...addCattle, Address: e.target.value })} />
-                <small
-                    className="text-muted">
-                    Please add your address.
-                </small>
-
-            </CCol>
-
-            <CCol md={6}>
-                <CFormInput
-                    className="modal-name"
-                    placeholder="Contact Person"
-                    aria-label="Contact Person"
-                    value={addCattle.Contact_Person}
-                    onChange={(e) => setAddCattle({ ...addCattle, Contact_Person: e.target.value })} />
-                <small
-                    className="text-muted">
-                    Please add your contact person.
-                </small>
+                <CFormSelect
+                        className="modal-name"
+                        placeholder="Statu Cattle"
+                        value={addCattle.statu_cattle}
+                        onChange={(e) => setAddCattle({ ...addCattle, statu_cattle: e.target.value })} 
+                        >
+                <option value={''}>Statu Cattle</option>
+                <option value={'In service'}>In service</option>
+                <option value={'Not in service'}>Not in service</option>
+                </CFormSelect>
+                    <small className="text-muted">
+                        Please add statu cattle.
+                    </small>
             </CCol>
         </CRow>
+
     </div>;
+
 
 const EditSectionOne = ({ currentCattle, setCurrentCattle }) =>
     <div>
-        <CRow className="g-3 mt-2">
+        <CRow
+            className="g-3 mt-2">
             <h4 className='text-green mt-1 me-5'>
-                Edit Client Data
+                Cattle Data
             </h4>
 
             <CCol md={6}>
                 <CFormInput
                     className="modal-name"
-                    placeholder="First Name"
-                    aria-label="First Name"
-                    value={currentCattle?.firts_name || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, firts_name: e.target.value })} />
+                    placeholder="cattle"
+                    aria-label="cattle"
+                    value={currentCattle?.cattle_Number || ''}
+                    onChange={(e) => setCurrentCattle({ ...currentCattle, cattle_Number: e.target.value })} />
                 <small
                     className="text-muted">
-                    Please add your firts name.
+                    Please add cattle number.
                 </small>
             </CCol>
 
             <CCol md={6}>
-                <CFormInput
+                <CFormSelect
                     className="modal-name"
-                    placeholder="Middle Name"
-                    aria-label="Middle Name"
-                    value={currentCattle?.Middle_Name || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, Middle_Name: e.target.value })} />
+                    placeholder="Breed Bovine"
+                    aria-label="Breed Bovine"
+                    value={currentCattle?.breed_Bovine || ''}
+                    onChange={(e) => setCurrentCattle({ ...currentCattle, breed_Bovine: e.target.value })} 
+                    >
+                <option value={''}>Breed Bovine</option>
+                <option value={'Holstein'}>Holstein</option>
+                <option value={'Jersey'}>Jersey</option>
+                <option value={'Gyrolandas'}>Gyrolandas</option>
+                <option value={'Carora'}>Carora</option>
+                <option value={'Gyrhol'}>Gyrhol</option>
+                </CFormSelect>                
                 <small
                     className="text-muted">
-                    Please add your middle name.
+                    Please add breed bovine.
                 </small>
             </CCol>
-
-            <CRow className="employees-las-name g-3 mt-2">
-                <CCol md={6}>
-                    <CFormInput
-                        className="modal-name"
-                        placeholder="First Last-Name"
-                        aria-label="First Last-Name"
-                        value={currentCattle?.Firts_Las_Name || ''}
-                        onChange={(e) => setCurrentCattle({ ...currentCattle, Firts_Las_Name: e.target.value })} />
-                    <small
-                        className="text-muted">
-                        Please add your firts last-name.
-                    </small>
-                </CCol>
-
-                <CCol md={6}>
-                    <CFormInput
-                        className="modal-name"
-                        placeholder="Second Last-Name"
-                        aria-label="Second Last-Name"
-                        value={currentCattle?.Second_Las_Name || ''}
-                        onChange={(e) => setCurrentCattle({ ...currentCattle, Second_Las_Name: e.target.value })} />
-                    <small
-                        className="text-muted">
-                        Please add your second last-name.
-                    </small>
-                </CCol>
-            </CRow>
         </CRow>
-    </div>;
-
-const EditSectionTwo = ({ currentCattle, setCurrentCattle }) =>
-    <div>
         <CRow className="g-3 mt-2">
-            <h4 className='text-green mt-1 me-5'>
-                Personal Data
-            </h4>
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
-                    placeholder="Document Number"
-                    aria-label="Document Number"
-                    value={currentCattle?.Document_Number || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, Document_Number: e.target.value })} />
-                <small
-                    className="text-muted">
-                    Please add your document number.
-                </small>
+                        className="modal-name"
+                        type="date"
+                        placeholder="Register Date of Birth"
+                        value={currentCattle?.Date_Birth || ''}
+                        onChange={(e) => setCurrentCattle({ ...currentCattle, Date_Birth: e.target.value })} />
+                    <small className="text-muted">
+                        Please add ate of Birth.
+                    </small>
             </CCol>
             <CCol md={6}>
-                <CFormInput
+                <CFormSelect
                     className="modal-name"
-                    type="date"
-                    placeholder="register"
-                    value={currentCattle?.Date_Birth || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, Date_Birth: e.target.value })} />
+                    placeholder="Color"
+                    aria-label="Color"
+                    value={currentCattle?.color || ''}
+                    onChange={(e) => setCurrentCattle({ ...currentCattle, color: e.target.value })} 
+                    >
+                <option value={''}>Color</option>
+                <option value={'Black and White'}>Black and White</option>
+                <option value={'Red and White'}>Red and White</option>
+                <option value={'Dark brown and White'}>Dark brown and White</option>
+                </CFormSelect>
                 <small
                     className="text-muted">
-                    Please add your date of Birth.
-                </small>
-            </CCol>
-        </CRow>
-        <CRow className=" g-3 mt-2">
-            <CCol md={6}>
-                <CFormInput
-                    className="modal-name"
-                    placeholder="Phone"
-                    aria-label="Phone"
-                    value={currentCattle?.Phone || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, Phone: e.target.value })} />
-                <small
-                    className="text-muted">
-                    Please add your phone.
-                </small>
-            </CCol>
-
-            <CCol md={6}>
-                <CFormInput
-                    className="modal-name"
-                    placeholder="Address"
-                    aria-label="Address"
-                    value={currentCattle?.Address || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, Address: e.target.value })} />
-                <small
-                    className="text-muted">
-                    Please add your address.
-                </small>
-            </CCol>
-
-            <CCol md={6}>
-                <CFormInput
-                    className="modal-name"
-                    placeholder="Contact Person"
-                    aria-label="Contact Person"
-                    value={currentCattle?.Contact_Person || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, Contact_Person: e.target.value })} />
-                <small
-                    className="text-muted">
-                    Please add your contact person.
+                    Please add cattle color.
                 </small>
             </CCol>
         </CRow>
-    </div>;
-
+        <CRow className="g-3 mt-2">
+            <CCol md={6}>
+                <CFormInput
+                        className="modal-name"
+                        placeholder="Weigth"
+                        value={currentCattle?.weigth || ''}
+                        onChange={(e) => setCurrentCattle({ ...currentCattle, weigth: e.target.value })} />
+                    <small className="text-muted">
+                        Please add cattle weigth.
+                    </small>
+            </CCol>
+            <CCol md={6}>
+                <CFormSelect
+                    className="modal-name"
+                    placeholder="Stage"
+                    aria-label="Stage"
+                    value={currentCattle?.stage || ''}
+                    onChange={(e) => setCurrentCattle({ ...currentCattle, stage: e.target.value })} 
+                    >
+                <option value={''}>Stage</option>
+                <option value={'Suckling calf'}>Suckling calf</option>
+                <option value={'Weaned calf'}>Weaned calf</option>
+                <option value={'Calves'}>Calves</option>
+                <option value={'Heifers'}>Heifers</option>
+                <option value={'Cows'}>Cows</option>
+                </CFormSelect>
+                <small
+                    className="text-muted">
+                    Please add cattle stage.
+                </small>
+            </CCol>
+        </CRow>
+        <CRow className="g-3 mt-2">
+            <CCol md={6}>
+                <CFormSelect
+                        className="modal-name"
+                        placeholder="Statu Cattle"
+                        value={currentCattle?.statu_cattle || ''}
+                        onChange={(e) => setCurrentCattle({ ...currentCattle, statu_cattle: e.target.value })} 
+                        >
+                <option value={''}>Statu Cattle</option>
+                <option value={'In service'}>In service</option>
+                <option value={'Not in service'}>Not in service</option>
+                </CFormSelect>
+                    <small className="text-muted">
+                        Please add statu cattle.
+                    </small>
+            </CCol>
+        </CRow>
+    </div>
 
 
 const Cattle = () => {
@@ -324,48 +297,40 @@ const Cattle = () => {
     const [deleteConfirmationCattle, setDeleteConfirmationCattle] = useState('')
     const [cattle, setCattle] = useState([
         {
-            firts_name: 'Alicia',
-            Middle_Name: 'Martina',
-            Firts_Las_Name: 'De los Santos',
-            Second_Las_Name: 'Pequeños',
-            Document_Number: '21456987',
-            Date_Birth: '09/09/2014',
-            Phone: '1234567894',
-            Address: 'Las Palmas',
-            Contact_Person: '0313245'
+            cattle_Number: '1001',
+            breed_Bovine: 'Holstein',
+            Date_Birth: '2021-01-15',
+            color: 'Black and White',
+            weigth: '600.50',
+            stage: 'Cows',
+            statu_cattle: 'in service',
         },
         {
-            firts_name: 'Alicia',
-            Middle_Name: 'Martina',
-            Firts_Las_Name: 'De los Santos',
-            Second_Las_Name: 'Pequeños',
-            Document_Number: '2145647987',
-            Date_Birth: '09/09/2014',
-            Phone: '1234567894',
-            Address: 'Las Palmas',
-            Contact_Person: '0313245'
+            cattle_Number: '1008',
+            breed_Bovine: 'Gyrolandas',
+            Date_Birth: '2022-03-10',
+            color: 'Dark brown and white',
+            weigth: '480.00',
+            stage: 'Heifers',
+            statu_cattle: 'not in service',
         },
 
     ])
     const [addCattle, setAddCattle] = useState({
-        firts_name: '',
-        Middle_Name: '',
-        Firts_Las_Name: '',
-        Second_Las_Name: '',
-        Document_Number: '',
+        cattle_Number: '',
+        breed_Bovine: '',
         Date_Birth: '',
-        Phone: '',
-        Address: '',
-        Contact_Person: '',
+        color: '',
+        weigth: '',
+        stage: '',
+        statu_cattle: '',
     
         })
     const sections = [
         <SectionOne addCattle={addCattle} setAddCattle={setAddCattle} />,
-        <SectionTwo addCattle={addCattle} setAddCattle={setAddCattle} />,
     ]
     const editsections = [
         <EditSectionOne currentCattle={currentCattle} setCurrentCattle={setCurrentCattle} />,
-        <EditSectionTwo currentCattle={currentCattle} setCurrentCattle={setCurrentCattle} />
     ]
 
     const handleNext = () => {
@@ -380,7 +345,7 @@ const Cattle = () => {
         }
     };
 
-    const handleNextEdit = () => {
+    const handleEdit = () => {
         if (currentEditSectionCattle < sections.length - 1) {
             setCurrentEditSectionCattle(currentSectionCattle + 1);
         }
@@ -410,13 +375,13 @@ const Cattle = () => {
     }
 
     const handleEditCattle = () => {
-        if (!currentCattle || !currentCattle.Document_Number) {
+        if (!currentCattle || !currentCattle.cattle_Number) {
             console.error("No Cattle selected for editing.");
             return;
         }
 
-        const updatedCattle = cattleattle.map((cattle) => {
-            if (cattle.Document_Number === currentCattle.Document_Number) {
+        const updatedCattle = cattle.map((cattle) => {
+            if (cattle.cattle_Number === currentCattle.cattle_Number) {
                 return { ...cattle, ...currentCattle };
             }
             return cattle;
@@ -427,14 +392,14 @@ const Cattle = () => {
     }
 
     const handleDeleteCattle = () => {
-        if (!currentCattle || !currentCattle.Document_Number) {
+        if (!currentCattle || !currentCattle.cattle_Number) {
             console.error("No Cattle selected for deletion.");
             return;
         }
 
         if (deleteConfirmationCattle  === 'confirm') {
             const deleteCattle  = cattle.filter(
-                (cattle) => cattle.Document_Number !== currentCattle.Document_Number
+                (cattle) => cattle.cattle_Number !== currentCattle.cattle_Number
             );
             setCattle (deleteCattle );
             setDeleteVisibleCattle (false);
@@ -460,32 +425,29 @@ const Cattle = () => {
                 <CTable hover responsive>
                     <CTableHead>
                         <CTableRow>
-                            <CTableHeaderCell className='text-green'> FirtsName  <CIcon icon={cilTag} className="nav-icon icon-small" /></CTableHeaderCell>
-                            <CTableHeaderCell className='text-green'> <CIcon icon={cilTags} />MiddleName</CTableHeaderCell>
-                            <CTableHeaderCell className='text-green'> <CIcon icon={cilTag} />Firts Las-Name</CTableHeaderCell>
-                            <CTableHeaderCell className='text-green'> <CIcon icon={cilTags} />Second Las-Name</CTableHeaderCell>
-                            <CTableHeaderCell className='text-green'> <CIcon icon={cilWallet} />Document-Number</CTableHeaderCell>
+                            <CTableHeaderCell className='text-green'> <CIcon icon={cilTag} />Cattle Number</CTableHeaderCell>
+                            <CTableHeaderCell className='text-green'> <CIcon icon={cilTags} />Bread Bovine</CTableHeaderCell>
                             <CTableHeaderCell className='text-green'> <CIcon icon={cilCalendar} />Date-Birth</CTableHeaderCell>
-                            <CTableHeaderCell className='text-green'> <CIcon icon={cilMobile} />Phone</CTableHeaderCell>
-                            <CTableHeaderCell className='text-green'> <CIcon icon={cilLocationPin} />Address</CTableHeaderCell>
-                            <CTableHeaderCell className='text-green'> <CIcon icon={cilContact} />Contact-Person</CTableHeaderCell>
+                            <CTableHeaderCell className='text-green'> <CIcon icon={cilTag} />Color</CTableHeaderCell>
+                            <CTableHeaderCell className='text-green'> <CIcon icon={cilTags} />Weigth</CTableHeaderCell>
+                            <CTableHeaderCell className='text-green'> <CIcon icon={cilWallet} />Stage</CTableHeaderCell>
+                            <CTableHeaderCell className='text-green'> <CIcon icon={cilMobile} />Status Cattle</CTableHeaderCell>
                             <CTableHeaderCell className='text-green'> <CIcon icon={cilPencil} />Actions</CTableHeaderCell>
                         </CTableRow>
                     </CTableHead>
                     <CTableBody>
                         {cattle.map((cattle) => (
                             <CTableRow key={cattle.Document_Number}>
-                                <CTableDataCell>{cattle?.firts_name || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.Middle_Name || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.Firts_Las_Name || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.Second_Las_Name || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.Document_Number || ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.cattle_Number || ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.breed_Bovine || ''} </CTableDataCell>
                                 <CTableDataCell>{cattle?.Date_Birth || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.Phone || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.Address || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.Contact_Person || ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.color || ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.weigth || ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.stage || ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.statu_cattle || ''} </CTableDataCell>
 
                                 <CTableDataCell>
+                                    <div className='d-flex'>
                                     <CButton
                                         className='me-2 mb-2'
                                         size='sm' color='info'
@@ -505,7 +467,7 @@ const Cattle = () => {
                                         onClick={() => { setCurrentCattle (cattle); setDeleteVisibleCattle (true); }}>
                                         Delete
                                     </CButton>
-
+                                    </div>
                                 </CTableDataCell>
 
                             </CTableRow>
@@ -534,22 +496,9 @@ const Cattle = () => {
                 </CModalBody>
 
                 <CModalFooter>
-                    <CButton
-                        className='button-color-login text-white'
-                        onClick={handlePrevious}
-                        disabled={currentSectionCattle  === 0}>
-                        Fomer
-                    </CButton>
 
                     <CButton
-                        className='button-color-login text-white'
-                        onClick={handleNext}
-                        disabled={currentSectionCattle  === sections.length - 1}>
-                        Next
-                    </CButton>
-
-                    <CButton
-                        className='button-color-login text-white'
+                        className='button-no-hover-green text-white'
                         onClick={handleAddCattle }>
                         Add
                     </CButton>
@@ -577,21 +526,7 @@ const Cattle = () => {
 
                 <CModalFooter>
                     <CButton
-                        className='button-color-login text-white'
-                        onClick={handlePreviousEdit}
-                        disabled={currentEditSectionCattle  === 0}>
-                        Previos
-                    </CButton>
-
-                    <CButton
-                        className='button-color-login text-white'
-                        onClick={handleNextEdit}
-                        disabled={currentEditSectionCattle  === sections.length - 1}>
-                        Next
-                    </CButton>
-
-                    <CButton
-                        className='button-color-login text-white'
+                        className='button-no-hover-green text-white'
                         onClick={handleEditCattle }>
                         Save Changes
                     </CButton>
@@ -622,20 +557,15 @@ const Cattle = () => {
 
                 <CModalFooter>
                     <CButton
-                        className='button-no-hover'
+                        className='button-no-hover-green text-white'
                         onClick={() => setDeleteVisibleCattle (false)}>
-                        <h6
-                            className='typography-color'>
                             Close
-                        </h6>
                     </CButton>
 
                     <CButton
-                        className='button-color-login'
+                        className='button-no-hover-green text-white'
                         onClick={handleDeleteCattle }>
-                        <h6 className='typography-color'>
                             delete
-                        </h6>
                     </CButton>
                 </CModalFooter>
             </CModal>

@@ -21,7 +21,7 @@ body {
 .sidebar-header {
   min-height: calc(4rem + 1px); // stylelint-disable-line function-disallowed-list
 }
-.sidebar-header{background-color:  rgb(255, 255, 255);}
+.sidebar-header{background-color:  rgb(248, 126, 45);}
 
 .sidebar-brand-full {
   margin-left: 3px;
@@ -89,6 +89,11 @@ body {
 .login-color{
   background-color: rgb(248, 126, 45);
 }
+// Estilo para el hover en las pestañas
+.c-nav-link:hover {
+  background-color: rgb(248, 126, 45)!important;	 // Cambia el color de fondo al pasar el mouse
+  color: #ffffff !important; // Cambia el color del texto al pasar el mouse 
+}
 
 .login-background{
     background: linear-gradient(rgba(255, 255, 255, 0.768), rgba(255, 255, 255, 0.932)),url('src/assets/images/finca/login2.jpeg') no-repeat center center; /* Imagen centrada */
@@ -139,6 +144,8 @@ body {
 .text-green{
   color:rgb(11, 69, 35)!important;
 }
+
+
 
 .typography-color-title{
   color:rgb(11, 69, 35) !important;
