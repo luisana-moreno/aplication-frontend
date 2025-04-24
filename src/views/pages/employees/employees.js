@@ -620,6 +620,7 @@ const employees = () => {
           </CModalTitle>
         </CModalHeader>
 
+
         <CModalBody
           style={{ maxHeight: '70vh', overflowY: 'auto' }}>
           {editsections[currentEditSection]}
