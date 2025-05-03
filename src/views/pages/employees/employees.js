@@ -505,7 +505,7 @@ const employees = () => {
 
       <CCardBody>
         <CTable hover responsive>
-          <CTableHead>
+          <CTableHead> 
             <CTableRow>
               <CTableHeaderCell className='text-green'> FirtsName  <CIcon icon={cilTag} className="nav-icon icon-small" /></CTableHeaderCell>
               <CTableHeaderCell className='text-green'> <CIcon icon={cilTags} />MiddleName</CTableHeaderCell>

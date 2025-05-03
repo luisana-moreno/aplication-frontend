@@ -56,8 +56,8 @@ const Register = () => {
                     />
                   </CInputGroup>
                   <div className="d-grid">
-                    <CButton className='button-color-login'>
-                      <h6 className='typography-color'>Create Account</h6>
+                    <CButton className='button-no-hover-green text-white'>
+                      Create Account
                       </CButton>
                   </div>
                 </CForm>

@@ -5,7 +5,6 @@ import {
     cilTag,
     cilTags,
     cilWallet,
-    cilCalendar,
     cilMobile,
     cilLocationPin,
     cilContact,
@@ -17,7 +16,6 @@ import {
     CCardBody,
     CCardHeader,
     CCol,
-    CForm,
     CFormInput,
     CRow,
     CTable,
@@ -27,7 +25,6 @@ import {
     CTableHeaderCell,
     CFormSelect,
     CTableBody,
-    CFormTextarea,
     CModal,
     CModalHeader,
     CModalBody,
@@ -437,7 +434,6 @@ const Client = () => {
     active={activeKey === 2}
     onClick={() => setActiveKey(2)}
 >
-            
                                 Company
                             </CNavLink>
                         </CNavItem>
@@ -447,16 +443,6 @@ const Client = () => {
                             <CTable hover responsive>
                                 <CTableHead>
                                     <CTableRow>
-                                        <CTableHeaderCell className="text-green">
-                                            {' '}
-                                            <CIcon icon={cilTag} />
-                                            Client type
-                                        </CTableHeaderCell>
-                                        <CTableHeaderCell className="text-green">
-                                            {' '}
-                                            <CIcon icon={cilTags} />
-                                            Company Name
-                                        </CTableHeaderCell>
                                         <CTableHeaderCell className="text-green">
                                             {' '}
                                             <CIcon icon={cilTag} />
@@ -471,11 +457,6 @@ const Client = () => {
                                             {' '}
                                             <CIcon icon={cilWallet} />
                                             Document-Number
-                                        </CTableHeaderCell>
-                                        <CTableHeaderCell className="text-green">
-                                            {' '}
-                                            <CIcon icon={cilWallet} />
-                                            Rif
                                         </CTableHeaderCell>
                                         <CTableHeaderCell className="text-green">
                                             {' '}
@@ -504,12 +485,9 @@ const Client = () => {
                                     .filter((client) => client.client_type === 'Person')
                                     .map((client) => (
                                         <CTableRow key={client.Document_Number}>
-                                            <CTableDataCell>{client?.client_type || ''} </CTableDataCell>
-                                            <CTableDataCell>{client?.company_name || ''} </CTableDataCell>
                                             <CTableDataCell>{client?.firts_name || ''} </CTableDataCell>
                                             <CTableDataCell>{client?.Firts_Las_Name || ''} </CTableDataCell>
                                             <CTableDataCell>{client?.Document_Number || ''} </CTableDataCell>
-                                            <CTableDataCell>{client?.Rif || ''} </CTableDataCell>
                                             <CTableDataCell>{client?.Phone || ''} </CTableDataCell>
                                             <CTableDataCell>{client?.Address || ''} </CTableDataCell>
                                             <CTableDataCell>{client?.email || ''} </CTableDataCell>
@@ -554,28 +532,8 @@ const Client = () => {
                                 <CTableRow>
                                         <CTableHeaderCell className="text-green">
                                             {' '}
-                                            <CIcon icon={cilTag} />
-                                            Client type
-                                        </CTableHeaderCell>
-                                        <CTableHeaderCell className="text-green">
-                                            {' '}
                                             <CIcon icon={cilTags} />
                                             Company Name
-                                        </CTableHeaderCell>
-                                        <CTableHeaderCell className="text-green">
-                                            {' '}
-                                            <CIcon icon={cilTag} />
-                                            firts name
-                                        </CTableHeaderCell>
-                                        <CTableHeaderCell className="text-green">
-                                            {' '}
-                                            <CIcon icon={cilTags} />
-                                            firts LasName
-                                        </CTableHeaderCell>
-                                        <CTableHeaderCell className="text-green">
-                                            {' '}
-                                            <CIcon icon={cilWallet} />
-                                            Document-Number
                                         </CTableHeaderCell>
                                         <CTableHeaderCell className="text-green">
                                             {' '}
@@ -608,12 +566,8 @@ const Client = () => {
                                     {client
                                     .filter((client) => client.client_type == 'Company')
                                     .map((client) => (
-                                         <CTableRow key={client.Document_Number}>
-                                            <CTableDataCell>{client?.client_type || ''}</CTableDataCell>
+                                            <CTableRow key={client.Document_Number}>
                                             <CTableDataCell>{client?.company_name || ''}</CTableDataCell>
-                                            <CTableDataCell>{client?.firts_name || ''}</CTableDataCell>
-                                            <CTableDataCell>{client?.Firts_Las_Name || ''}</CTableDataCell>
-                                            <CTableDataCell>{client?.Document_Number || ''}</CTableDataCell>
                                             <CTableDataCell>{client?.Rif || ''}</CTableDataCell>
                                             <CTableDataCell>{client?.Phone || ''}</CTableDataCell>
                                             <CTableDataCell>{client?.Address || ''}</CTableDataCell>
