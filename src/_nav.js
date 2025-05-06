@@ -22,21 +22,11 @@ const _nav = [
     name: 'dashboard',
     to: '/dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      text:'NEW',
-    },
   },
 //creado
 {
   component: CNavTitle,
   name: 'Modules',
-},
-{
-  component: CNavItem,
-  name: 'Users',
-  to: '/users',
-  icon: <CIcon icon={cilContact} customClassName="nav-icon" />,
 },
 
 {

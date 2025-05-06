@@ -3,7 +3,8 @@
 );
 @use "@coreui/chartjs/scss/coreui-chartjs";
 @use "vendors/simplebar";
-@import "_custom";
+@use "_custom";
+@use "src/scss/_fullCalendar.scss";
 
 body {
   background-color: rgba(240, 248, 255, 0);
@@ -21,7 +22,7 @@ body {
 .sidebar-header {
   min-height: calc(4rem + 1px); // stylelint-disable-line function-disallowed-list
 }
-.sidebar-header{background-color:  rgb(255, 255, 255);}
+.sidebar-header{background-color:  rgb(248, 126, 45);}
 
 .sidebar-brand-full {
   margin-left: 3px;
@@ -49,9 +50,6 @@ body {
 
 .sidebar-narrow,
 .sidebar-narrow-unfoldable:not(:hover) {
-  .sidebar-narrow-unfoldable:not(:hover){
-    
-  }
   .sidebar-toggler {
     margin-inline-end: auto;
   }
@@ -88,6 +86,11 @@ body {
 
 .login-color{
   background-color: rgb(248, 126, 45);
+}
+// Estilo para el hover en las pestañas
+.c-nav-link:hover {
+  background-color: rgb(248, 126, 45)!important;	 // Cambia el color de fondo al pasar el mouse
+  color: #ffffff !important; // Cambia el color del texto al pasar el mouse 
 }
 
 .login-background{
@@ -140,6 +143,8 @@ body {
   color:rgb(11, 69, 35)!important;
 }
 
+
+
 .typography-color-title{
   color:rgb(11, 69, 35) !important;
 }
@@ -191,31 +196,3 @@ body {
   box-shadow: none !important;/* Elimina el efecto de sombra */
 }
 
-
-//calendario
-// Cambiar el color de las fechas del calendario
-.fc .fc-daygrid-day {
-  color: #ff00dd !important; /* Cambia el color de la letra de los días */
-}
-
-// Cambiar el color de los encabezados de los días (Lunes, Martes, etc.)
-.fc .fc-col-header-cell {
-  color: #28a745 !important; /* Cambia el color de los encabezados */
-  font-weight: bold; /* Opcional: hacer el texto en negrita */
-}
-
-// Cambiar el color de los números de los días
-.fc .fc-daygrid-day-number {
-  color: #dc3545 !important; /* Cambia el color de los números de los días */
-}
-
-// Cambiar el color de los eventos
-.fc .fc-event {
-  color: #ffffff !important; /* Cambia el color del texto de los eventos */
-  background-color: #17a2b8 !important; /* Cambia el color de fondo de los eventos */
-}
-
-// Cambiar el color de los días inactivos (fuera del mes actual)
-.fc .fc-day-other {
-  color: #6c757d !important; /* Cambia el color de los días inactivos */
-}

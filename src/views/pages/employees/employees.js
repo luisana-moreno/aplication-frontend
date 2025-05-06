@@ -164,13 +164,35 @@ const SectionTwo = ({ addEmployee, setAddEmployee }) =>
       <CCol md={6}>
         <CFormInput
           className="modal-name"
-          placeholder="Contact Person"
-          aria-label="Contact Person"
-          value={addEmployee.Contact_Person}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Contact_Person: e.target.value })} />
+          type='date'
+          placeholder="Date Contrate "
+          value={addEmployee.Date_contrate}
+          onChange={(e) => setAddEmployee({ ...addEmployee, Date_contrate: e.target.value })} />
         <small
           className="text-muted">
-          Please add your contact person.
+          Please add your contrate date.
+        </small>
+      </CCol>
+
+      <CCol md={6}>
+        <CFormSelect
+          className="modal-name"
+          placeholder="Position"
+          aria-label="Position"
+          value={addEmployee.Position}
+          onChange={(e) => setAddEmployee({ ...addEmployee, Position: e.target.value })} 
+          >
+          <option value="">Select Position</option>
+          <option value="Manager">Manager</option>
+          <option value="Dairy Manager">Dairy Manager</option>
+          <option value="Veterinary">Veterinary</option>
+          <option value="Transportation Manager">Transportation Manager</option>
+          <option value="Worker">Worker</option>
+          <option value="Pasture Manager">Pasture Manager</option>
+        </CFormSelect>
+        <small
+          className="text-muted">
+          Please add your Position.
         </small>
       </CCol>
     </CRow>
@@ -301,13 +323,34 @@ const EditSectionTwo = ({ currentEmployee, setCurrentEmployee }) =>
       <CCol md={6}>
         <CFormInput
           className="modal-name"
-          placeholder="Contact Person"
-          aria-label="Contact Person"
-          value={currentEmployee?.Contact_Person || ''}
-          onChange={(e) => setCurrentEmployee({ ...currentEmployee, Contact_Person: e.target.value })} />
+          type='date'
+          placeholder="Date Contrate "
+          value={currentEmployee?.Date_contrate || ''}
+          onChange={(e) => setCurrentEmployee({ ...currentEmployee, Date_contrate: e.target.value })} />
         <small
           className="text-muted">
-          Please add your contact person.
+          Please add your date contrate.
+        </small>
+      </CCol>
+      <CCol md={6}>
+        <CFormSelect
+          className="modal-name"
+          placeholder="Position"
+          aria-label="Position"
+          value={currentEmployee?.Position || ''}
+          onChange={(e) => setAddEmployee({ ...currentEmployee, Position: e.target.value })} 
+          >
+          <option value="">Select Position</option>
+          <option value="Manager">Manager</option>
+          <option value="Dairy Manager">Dairy Manager</option>
+          <option value="Veterinary">Veterinary</option>
+          <option value="Transportation Manager">Transportation Manager</option>
+          <option value="Worker">Worker</option>
+          <option value="Pasture Manager">Pasture Manager</option>
+        </CFormSelect>
+        <small
+          className="text-muted">
+          Please add your Position.
         </small>
       </CCol>
     </CRow>
@@ -325,26 +368,29 @@ const employees = () => {
   const [employee, setEmployee] = useState([
 
     {
-      firts_name: 'Alicia',
-      Middle_Name: 'Martina',
-      Firts_Las_Name: 'De los Santos',
-      Second_Las_Name: 'Pequeños',
-      Document_Number: '21456987',
-      Date_Birth: '09/09/2014',
-      Phone: '1234567894',
-      Address: 'Las Palmas',
-      Contact_Person: '0313245'
+      firts_name: 'Carlos',
+      Middle_Name: 'Eduardo',
+      Firts_Las_Name: 'Moreno',
+      Second_Las_Name: 'Andrade',
+      Document_Number: '2145647987',
+      Date_Birth: '09/09/1984',
+      Phone: '0424-1234567',
+      Address: 'La Grita',
+      Date_contrate: '09/09/2023',
+      Position: 'Manager'
+
     },
     {
-      firts_name: 'Alicia',
-      Middle_Name: 'Martina',
-      Firts_Las_Name: 'De los Santos',
-      Second_Las_Name: 'Pequeños',
-      Document_Number: '2145647987',
-      Date_Birth: '09/09/2014',
-      Phone: '1234567894',
-      Address: 'Las Palmas',
-      Contact_Person: '0313245'
+      firts_name: 'Luis',
+      Middle_Name: 'Eduardo',
+      Firts_Las_Name: 'Moreno',
+      Second_Las_Name: 'Andrade',
+      Document_Number: '13762893',
+      Date_Birth: '11/10/1970',
+      Phone: '04247580322',
+      Address: 'Pueblo Hondo',
+      Date_contrate: '05/06/2005',
+      Position: 'Veterinary'
     },
 
   ])
@@ -459,7 +505,7 @@ const employees = () => {
 
       <CCardBody>
         <CTable hover responsive>
-          <CTableHead>
+          <CTableHead> 
             <CTableRow>
               <CTableHeaderCell className='text-green'> FirtsName  <CIcon icon={cilTag} className="nav-icon icon-small" /></CTableHeaderCell>
               <CTableHeaderCell className='text-green'> <CIcon icon={cilTags} />MiddleName</CTableHeaderCell>
@@ -469,7 +515,8 @@ const employees = () => {
               <CTableHeaderCell className='text-green'> <CIcon icon={cilCalendar} />Date-Birth</CTableHeaderCell>
               <CTableHeaderCell className='text-green'> <CIcon icon={cilMobile} />Phone</CTableHeaderCell>
               <CTableHeaderCell className='text-green'> <CIcon icon={cilLocationPin} />Address</CTableHeaderCell>
-              <CTableHeaderCell className='text-green'> <CIcon icon={cilContact} />Contact-Person</CTableHeaderCell>
+              <CTableHeaderCell className='text-green'> <CIcon icon={cilContact} />Date Contrate</CTableHeaderCell>
+              <CTableHeaderCell className='text-green'> <CIcon icon={cilContact} />Position</CTableHeaderCell>
               <CTableHeaderCell className='text-green'> <CIcon icon={cilPencil} />Actions</CTableHeaderCell>
             </CTableRow>
           </CTableHead>
@@ -484,9 +531,11 @@ const employees = () => {
                 <CTableDataCell>{employees?.Date_Birth || ''} </CTableDataCell>
                 <CTableDataCell>{employees?.Phone || ''} </CTableDataCell>
                 <CTableDataCell>{employees?.Address || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Contact_Person || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.Date_contrate || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.Position || ''} </CTableDataCell>
 
                 <CTableDataCell>
+                  <div className='d-flex'>
                   <CButton
                     className='me-2 mb-2'
                     size='sm' color='info'
@@ -506,7 +555,7 @@ const employees = () => {
                     onClick={() => { setCurrentEmployee(employees); setDeleteVisible(true); }}>
                     Delete
                   </CButton>
-
+                  </div>
                 </CTableDataCell>
 
               </CTableRow>
@@ -536,21 +585,21 @@ const employees = () => {
 
         <CModalFooter>
           <CButton
-            className='button-no-hover-orange text-white'
+            className='button-no-hover-green text-white'
             onClick={handlePrevious}
             disabled={currentSection === 0}>
             Fomer
           </CButton>
 
           <CButton
-            className='button-no-hover-orange text-white'
+            className='button-no-hover-green text-white'
             onClick={handleNext}
             disabled={currentSection === sections.length - 1}>
             Next
           </CButton>
 
           <CButton
-            className='button-no-hover-orange text-white'
+            className='button-no-hover-green text-white'
             onClick={handleAddEmployee}>
             Add
           </CButton>
@@ -571,6 +620,7 @@ const employees = () => {
           </CModalTitle>
         </CModalHeader>
 
+
         <CModalBody
           style={{ maxHeight: '70vh', overflowY: 'auto' }}>
           {editsections[currentEditSection]}
@@ -578,21 +628,21 @@ const employees = () => {
 
         <CModalFooter>
           <CButton
-            className='button-no-hover-orange text-white'
+            className='button-no-hover-green text-white'
             onClick={handlePreviousEdit}
             disabled={currentEditSection === 0}>
             Previos
           </CButton>
 
           <CButton
-            className='button-no-hover-orange text-white'
+            className='button-no-hover-green text-white'
             onClick={handleNextEdit}
             disabled={currentEditSection === sections.length - 1}>
             Next
           </CButton>
 
           <CButton
-            className='button-no-hover-orange text-white'
+            className='button-no-hover-green text-white'
             onClick={handleEditEmployee}>
             Save Changes
           </CButton>
@@ -623,7 +673,7 @@ const employees = () => {
 
         <CModalFooter>
           <CButton
-            className='button-no-hover'
+            className='button-no-hover green'
             onClick={() => setDeleteVisible(false)}>
             <h6
               className='typography-color'>
@@ -632,7 +682,7 @@ const employees = () => {
           </CButton>
 
           <CButton
-            className='button-no-hover-orange'
+            className='button-no-hover-green'
             onClick={handleDeleteEmployee}>
             <h6 className='typography-color'>
               delete
