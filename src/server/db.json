@@ -211,15 +211,12 @@
   ],
   "users": [
     {
-      "id": "1",
-      "password": "secure123",
-      "first_name": "Carlos",
-      "first_lasname": "Gomez",
-      "email": "carlos@example.com",
-      "phone": "04141234567",
-      "rol": 1,
-      "created_at": "2024-01-10T08:00:00",
-      "update_at": "2024-01-10T08:00:00"
+      "id": "c483",
+      "first_name": "luisa",
+      "first_lasname": "moreno",
+      "email": "luisanavalmor@gmail.com",
+      "phone": "",
+      "rol": "dairy_manager"
     }
   ],
   "employees": [
@@ -291,6 +288,18 @@
       "phone": "04245554444",
       "address": "Carrera 15, San Cristóbal",
       "email": "jose.lopez@example.com"
+    },
+    {
+      "id": "6c6a",
+      "client_type": "company",
+      "company_name": "luisa",
+      "first_name": "",
+      "first_lasname": "",
+      "document_number": "",
+      "rif": "111",
+      "phone": "111",
+      "address": "111",
+      "email": "jjj"
     }
   ],
   "cattle": [
