@@ -102,7 +102,7 @@ const Vaccination = () => {
           </p>
           <CForm>
             <CFormInput
-              className="modal-name mb-3"
+              className="modal-name mb-3 custom-select"
               placeholder="Cattle Number"
               type="text"
               name="cattleId"
@@ -110,7 +110,7 @@ const Vaccination = () => {
               onChange={(e) => setFormData({ ...formData, cattleId: e.target.value })}
             />
             <CFormInput
-              className="modal-name mb-3"
+              className="modal-name mb-3 custom-select"
               placeholder="Employee Number"
               type="text"
               name="employeeId"
@@ -118,7 +118,7 @@ const Vaccination = () => {
               onChange={(e) => setFormData({ ...formData, employeeId: e.target.value })}
             />
             <CFormInput
-              className="modal-name mb-3"
+              className="modal-name mb-3 custom-select"
               placeholder="Diagnosis"
               type="text"
               name="diagnosis"
@@ -126,7 +126,7 @@ const Vaccination = () => {
               onChange={(e) => setFormData({ ...formData, diagnosis: e.target.value })}
             />
             <CFormInput
-              className="modal-name mb-3"
+              className="modal-name mb-3 custom-select"
               placeholder="Treatment"
               type="text"
               name="treatament"
@@ -134,7 +134,7 @@ const Vaccination = () => {
               onChange={(e) => setFormData({ ...formData, treatament: e.target.value })}
             />
             <CFormInput
-              className="modal-name mb-3"
+              className="modal-name mb-3 custom-select"
               type="text"
               placeholder="Vaccine Name"
               name="vaccine"
@@ -144,7 +144,7 @@ const Vaccination = () => {
             <CFormInput
               className="modal-name mb-3"
               type="date"
-              placeholder="Date Vaccination"
+              placeholder="Date Vaccination custom-select"
               name="date_vaccination"
               value={formData.date_vaccination}
               onChange={(e) => setFormData({ ...formData, date_vaccination: e.target.value })}

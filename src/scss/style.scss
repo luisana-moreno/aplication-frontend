@@ -196,3 +196,14 @@ body {
   box-shadow: none !important;/* Elimina el efecto de sombra */
 }
 
+/* Cambiar el color del borde y el fondo cuando el select está enfocado */
+.custom-select:focus {
+  border-color: rgb(248, 126, 45) !important; /* Cambia el color del borde */
+  box-shadow: 0 0 0 0.2rem rgb(254, 207, 176)!important; /* Sombra verde */
+}
+
+/* Cambiar el color de fondo de las opciones al pasar el mouse */
+.custom-select option:hover {
+  background-color: #f8d7da !important; /* Fondo rosado */
+  color: #721c24 !important; /* Texto rojo oscuro */
+}

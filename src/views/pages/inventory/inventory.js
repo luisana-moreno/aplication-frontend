@@ -48,7 +48,7 @@ const SectionOne = ({ addInput, setAddInput }) => (
 
             <CCol md={6}>
                 <CFormSelect
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Input Category"
                     aria-label="Input Category"
                     value={addInput.input_category || ''}
@@ -63,7 +63,7 @@ const SectionOne = ({ addInput, setAddInput }) => (
 
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Name"
                     aria-label="Name"
                     value={addInput.name || ''}
@@ -76,7 +76,7 @@ const SectionOne = ({ addInput, setAddInput }) => (
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Amount"
                     aria-label="Amount"
                     value={addInput.amount || ''}
@@ -87,7 +87,7 @@ const SectionOne = ({ addInput, setAddInput }) => (
 
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Expiration Date"
                     aria-label="Expiration Date"
                     value={addInput.expiration_date || ''}
@@ -105,7 +105,7 @@ const EditSectionOne = ({ currentInput, setCurrentInput }) => (
 
             <CCol md={6}>
                 <CFormSelect
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Input Category"
                     aria-label="Input Category"
                     value={currentInput?.input_category || ''}
@@ -120,7 +120,7 @@ const EditSectionOne = ({ currentInput, setCurrentInput }) => (
 
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Name"
                     aria-label="Name"
                     value={currentInput?.name || ''}
@@ -133,7 +133,7 @@ const EditSectionOne = ({ currentInput, setCurrentInput }) => (
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Amount"
                     aria-label="Amount"
                     value={currentInput?.amount || ''}
@@ -145,7 +145,7 @@ const EditSectionOne = ({ currentInput, setCurrentInput }) => (
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Expiration Date"
                     aria-label="Expiration Date"
                     value={currentInput?.expiration_date || ''}
@@ -155,7 +155,7 @@ const EditSectionOne = ({ currentInput, setCurrentInput }) => (
             </CCol>
             <CCol md={6}>
                 <CFormTextarea
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Description"
                     aria-label="Description"
                     value={currentInput?.description || ''}
