@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { helpFetch } from "src/helpper/helpFetch.js"
 import CIcon from "@coreui/icons-react"
 import { cilPlus, cilTag, cilTags, cilWallet, cilMobile, cilLocationPin, cilContact, cilPencil } from "@coreui/icons"
@@ -14,7 +14,6 @@ import {
     CTableDataCell,
     CTableHead,
     CTableRow,
-    CTableHeaderCell,
     CFormSelect,
     CTableBody,
     CModal,
@@ -22,11 +21,6 @@ import {
     CModalBody,
     CModalFooter,
     CModalTitle,
-    CNav,
-    CNavItem,
-    CNavLink,
-    CTabContent,
-    CTabPane,
 } from "@coreui/react"
 const SectionOne = ({ addUser, setAddUser, userPosition }) => (
     <div>
@@ -229,7 +223,7 @@ const users = () => {
     , [])
     const handleAddUser = async () => {
         const addedUser = await API.post(
-            "/users", {
+            "/user", {
             first_name: addUser.first_name,
             first_lasname: addUser.first_lasname,
             email: addUser.email,

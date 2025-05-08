@@ -291,7 +291,7 @@ const Client = () => {
         client_type: "",
         company_name: "",
         first_name: "",
-        first_lasname: "",
+        first_lasname: "", 
         document_number: "",
         rif: "",
         phone: "",

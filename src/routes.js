@@ -18,7 +18,6 @@ const routes = [
   
   //agregado
   { path: '/employee', name: 'Employee', element: Employee},  
-  { path: '/users', name: 'users' , element: Users},
   { path: '/cattle', name: 'cattle', element: Cattle},
   { path: '/vaccination', name: 'vaccination', element: Vaccination},
   { path: '/client', name: 'client', element: Client},

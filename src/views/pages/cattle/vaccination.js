@@ -6,7 +6,7 @@ import 'src/scss/style.scss'
 import {
   CButton,
   CModal,
-  CModalBody,
+  CModalBody, 
   CModalFooter,
   CModalHeader,
   CModalTitle,
