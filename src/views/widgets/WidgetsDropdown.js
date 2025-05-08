@@ -41,7 +41,7 @@ const WidgetsDropdown = (props) => {
     <CRow className={props.className} xs={{ gutter: 4 }}>
       <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
-          color="primary"
+          color="warning"
           value={
             <>
               26K{' '}
@@ -50,7 +50,7 @@ const WidgetsDropdown = (props) => {
               </span>
             </>
           }
-          title="Users"
+          title="Employee"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
@@ -131,7 +131,7 @@ const WidgetsDropdown = (props) => {
       </CCol>
       <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
-          color="info"
+          color="warning"
           value={
             <>
               $6.200{' '}
@@ -140,7 +140,7 @@ const WidgetsDropdown = (props) => {
               </span>
             </>
           }
-          title="Income"
+          title="Cattle"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
@@ -229,7 +229,7 @@ const WidgetsDropdown = (props) => {
               </span>
             </>
           }
-          title="Conversion Rate"
+          title="Events and Vaccines"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
@@ -292,7 +292,7 @@ const WidgetsDropdown = (props) => {
       </CCol>
       <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
-          color="danger"
+          color="warning"
           value={
             <>
               44K{' '}

@@ -66,9 +66,6 @@ const SectionOne = ({ addUser, setAddUser, userPosition }) => (
                 />
                 <small className="text-muted">Please enter the user's email.</small>
             </CCol>
-        </CRow>
-
-        <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormSelect
                     className="modal-name custom-select"
@@ -86,7 +83,7 @@ const SectionOne = ({ addUser, setAddUser, userPosition }) => (
                 </CFormSelect>
                 <small className="text-muted">Please select the user role.</small>
             </CCol>
-        </CRow>
+            </CRow>
     </div>
 );
 const EditSectionOne = ({ currentUser, setCurrentUser, userPosition }) => (

@@ -95,6 +95,16 @@ const SectionOne = ({ addInput, setAddInput }) => (
                 />
                 <small className="text-muted">Please add the expiration date of the input.</small>
             </CCol>
+            <CCol md={6}>
+                <CFormTextarea
+                    className="modal-name custom-select"
+                    placeholder="Description"
+                    aria-label="Description"
+                    value={addInput?.description || ''}
+                    onChange={(e) => setAddInput({ ...addInput, description: e.target.value })}
+                />
+                <small className="text-muted">Please add the description of the input.</small>
+            </CCol>
         </CRow>
     </div>
 )

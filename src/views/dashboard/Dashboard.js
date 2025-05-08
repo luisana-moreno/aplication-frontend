@@ -21,23 +21,6 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {
-  cibCcAmex,
-  cibCcApplePay,
-  cibCcMastercard,
-  cibCcPaypal,
-  cibCcStripe,
-  cibCcVisa,
-  cibGoogle,
-  cibFacebook,
-  cibLinkedin,
-  cifBr,
-  cifEs,
-  cifFr,
-  cifIn,
-  cifPl,
-  cifUs,
-  cibTwitter,
-  cilCloudDownload,
   cilPeople,
   cilUser,
   cilUserFemale,
@@ -82,21 +65,20 @@ const Dashboard = () => {
     {
       avatar: { src: avatar1, status: 'success' },
       user: {
-        name: 'hhhhh',
+        name: 'Julio',
         new: true,
         registered: 'Jan 1, 2023',
       },
       usage: {
         value: 50,
         period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'success',
       },
       activity: '10 sec ago',
     },
     {
       avatar: { src: avatar2, status: 'danger' },
       user: {
-        name: 'Avram Tarasios',
+        name: 'Pedro',
         new: false,
         registered: 'Jan 1, 2023',
       },
@@ -109,7 +91,7 @@ const Dashboard = () => {
     },
     {
       avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2023' },
+      user: { name: 'Omar', new: true, registered: 'Jan 1, 2023' },
       usage: {
         value: 74,
         period: 'Jun 11, 2023 - Jul 10, 2023',
@@ -119,7 +101,7 @@ const Dashboard = () => {
     },
     {
       avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2023' },
+      user: { name: 'Luisana', new: true, registered: 'Jan 1, 2023' },
       usage: {
         value: 98,
         period: 'Jun 11, 2023 - Jul 10, 2023',
@@ -130,7 +112,7 @@ const Dashboard = () => {
     {
       avatar: { src: avatar5, status: 'success' },
       user: {
-        name: 'Agapetus Tadeáš',
+        name: 'Mariana',
         new: true,
         registered: 'Jan 1, 2023',
       },
@@ -144,7 +126,7 @@ const Dashboard = () => {
     {
       avatar: { src: avatar6, status: 'danger' },
       user: {
-        name: 'Friderik Dávid',
+        name: 'Carlos',
         new: true,
         registered: 'Jan 1, 2023',
       },
