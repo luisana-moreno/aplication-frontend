@@ -12,7 +12,8 @@ import {
   cilTask,
   cilAddressBook,
   cibCodesandbox,
-  cilCash
+  cilCash,
+  cilUser,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -28,7 +29,19 @@ const _nav = [
   component: CNavTitle,
   name: 'Modules',
 },
-
+{
+  component: CNavGroup,
+  name: 'User Management',
+  icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
+  items: [
+    {
+      component: CNavItem,
+      name: 'Register User',
+      to: '/users',
+      icon: <CIcon icon={cilUserFollow} customClassName="nav-icon" />
+  }
+]
+},
 {
   component: CNavGroup,
   name: 'Employee Management',

@@ -1,4 +1,5 @@
-import react, { useState } from 'react'
+import react, { useState, useEffect } from 'react'
+import { helpFetch } from "src/helpper/helpFetch.js"
 import CIcon from '@coreui/icons-react';
 import {
     cilPlus,
@@ -32,8 +33,8 @@ import {
     CModalFooter,
     CModalTitle,
 } from '@coreui/react';
-import { color } from 'chart.js/helpers';
-const SectionOne = ({ addCattle, setAddCattle }) =>
+
+const SectionOne = ({ addCattle, setAddCattle, breedBovine, colorCattle, stageCattle, statuCattle}) =>
     <div>
         <CRow
             className="g-3 mt-2">
@@ -43,11 +44,11 @@ const SectionOne = ({ addCattle, setAddCattle }) =>
 
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="cattle Number"
                     aria-label="cattle Number"
-                    value={addCattle.cattle_Number}
-                    onChange={(e) => setAddCattle({ ...addCattle, cattle_Number: e.target.value })}
+                    value={addCattle.cattle_number}
+                    onChange={(e) => setAddCattle({ ...addCattle, cattle_number: e.target.value })}
                 />
                 <small
                     className="text-muted">
@@ -58,18 +59,19 @@ const SectionOne = ({ addCattle, setAddCattle }) =>
             <CCol md={6}>
                 
                 <CFormSelect
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Breed Bovine"
                     aria-label="Breed Bovine"
-                    value={addCattle.breed_Bovine}
-                    onChange={(e) => setAddCattle({ ...addCattle, breed_Bovine: e.target.value })}
+                    value={addCattle.breed_bovine}
+                    onChange={(e) => setAddCattle({ ...addCattle, breed_bovine: e.target.value })}
                 >
-                <option value={''}>Breed Bovine</option>
-                <option value={'Holstein'}>Holstein</option>
-                <option value={'Jersey'}>Jersey</option>
-                <option value={'Gyrolandas'}>Gyrolandas</option>
-                <option value={'Carora'}>Carora</option>
-                <option value={'Gyrhol'}>Gyrhol</option>
+                <option value="">breed Bovine</option>
+                                    {breedBovine.map((cattleRace) => (
+                                        <option key={cattleRace.id}
+                                            value={cattleRace.name}>
+                                            {cattleRace.name}
+                                        </option>
+                                    ))}
                 </CFormSelect>
                 <small
                     className="text-muted">
@@ -80,27 +82,31 @@ const SectionOne = ({ addCattle, setAddCattle }) =>
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormInput
-                        className="modal-name"
+                        className="modal-name custom-select"
                         type="date"
                         placeholder="Register Date of Birth"
-                        value={addCattle.Date_Birth}
-                        onChange={(e) => setAddCattle({ ...addCattle, Date_Birth: e.target.value })} />
+                        value={addCattle.date_birth}
+                        onChange={(e) => setAddCattle({ ...addCattle, date_birth: e.target.value })}>
+                        </CFormInput>
                     <small className="text-muted">
                         Please add ate of Birth.
                     </small>
             </CCol>
             <CCol md={6}>
                 <CFormSelect
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Color"
                     aria-label="Color"
-                    value={addCattle.color}
-                    onChange={(e) => setAddCattle({ ...addCattle, color: e.target.value })} 
+                    value={addCattle.color_cattle}
+                    onChange={(e) => setAddCattle({ ...addCattle, color_cattle: e.target.value })} 
                     >
-                <option value={''}>Color</option>
-                <option value={'Black and White'}>Black and White</option>
-                <option value={'Red and White'}>Red and White</option>
-                <option value={'Dark brown and White'}>Dark brown and White</option>
+                <option value="">Color Cattle</option>
+                                    {colorCattle.map((color) => (
+                                        <option key={color.id}
+                                            value={color.name}>
+                                            {color.name}
+                                        </option>
+                                    ))}
                 </CFormSelect>
                     
                 <small
@@ -112,28 +118,30 @@ const SectionOne = ({ addCattle, setAddCattle }) =>
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormInput
-                        className="modal-name"
-                        placeholder="Weigth"
-                        value={addCattle.weigth}
-                        onChange={(e) => setAddCattle({ ...addCattle, weigth: e.target.value })} />
+                        className="modal-name custom-select"
+                        type="number" 
+                        placeholder="Weight"
+                        value={addCattle.weight}
+                        onChange={(e) => setAddCattle({ ...addCattle, weight: parseFloat(e.target.value) || '' })}/>
                     <small className="text-muted">
                         Please add cattle weigth.
                     </small>
             </CCol>
             <CCol md={6}>
                 <CFormSelect
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Stage"
                     aria-label="Stage"
                     value={addCattle.stage}
                     onChange={(e) => setAddCattle({ ...addCattle, stage: e.target.value })} 
                     >
-                <option value={''}>Stage</option>
-                <option value={'Suckling calf'}>Suckling calf</option>
-                <option value={'Weaned calf'}>Weaned calf</option>
-                <option value={'Calves'}>Calves</option>
-                <option value={'Heifers'}>Heifers</option>
-                <option value={'Cows'}>Cows</option>
+                    <option value="">Stage</option>
+                        {stageCattle.map((stage) => (
+                        <option key={stage.id} 
+                            value={stage.name}>
+                            {stage.name}
+                        </option>
+))}
                 </CFormSelect>
                 <small
                     className="text-muted">
@@ -144,14 +152,18 @@ const SectionOne = ({ addCattle, setAddCattle }) =>
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormSelect
-                        className="modal-name"
+                        className="modal-name custom-select"
                         placeholder="Statu Cattle"
                         value={addCattle.statu_cattle}
                         onChange={(e) => setAddCattle({ ...addCattle, statu_cattle: e.target.value })} 
                         >
-                <option value={''}>Statu Cattle</option>
-                <option value={'In service'}>In service</option>
-                <option value={'Not in service'}>Not in service</option>
+                <option value="">Status cattle</option>
+                                    {statuCattle.map((statu) => (
+                                        <option key={statu.id}
+                                            value={statu.name}>
+                                            {statu.name}
+                                        </option>
+                                    ))}
                 </CFormSelect>
                     <small className="text-muted">
                         Please add statu cattle.
@@ -162,7 +174,7 @@ const SectionOne = ({ addCattle, setAddCattle }) =>
     </div>;
 
 
-const EditSectionOne = ({ currentCattle, setCurrentCattle }) =>
+const EditSectionOne = ({ currentCattle, setCurrentCattle, breedBovine, colorCattle, stageCattle, statuCattle}) =>
     <div>
         <CRow
             className="g-3 mt-2">
@@ -172,11 +184,11 @@ const EditSectionOne = ({ currentCattle, setCurrentCattle }) =>
 
             <CCol md={6}>
                 <CFormInput
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="cattle"
                     aria-label="cattle"
-                    value={currentCattle?.cattle_Number || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, cattle_Number: e.target.value })} />
+                    value={currentCattle?.cattle_number || ''}
+                    onChange={(e) => setCurrentCattle({ ...currentCattle, cattle_number: e.target.value })} />
                 <small
                     className="text-muted">
                     Please add cattle number.
@@ -185,18 +197,19 @@ const EditSectionOne = ({ currentCattle, setCurrentCattle }) =>
 
             <CCol md={6}>
                 <CFormSelect
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Breed Bovine"
                     aria-label="Breed Bovine"
-                    value={currentCattle?.breed_Bovine || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, breed_Bovine: e.target.value })} 
+                    value={currentCattle?.breed_bovine || ''}
+                    onChange={(e) => setCurrentCattle({ ...currentCattle, breed_bovine: e.target.value })} 
                     >
-                <option value={''}>Breed Bovine</option>
-                <option value={'Holstein'}>Holstein</option>
-                <option value={'Jersey'}>Jersey</option>
-                <option value={'Gyrolandas'}>Gyrolandas</option>
-                <option value={'Carora'}>Carora</option>
-                <option value={'Gyrhol'}>Gyrhol</option>
+                <option value="">breed Bovine</option>
+                                    {breedBovine.map((cattleRace) => (
+                                        <option key={cattleRace.id}
+                                            value={cattleRace.name}>
+                                            {cattleRace.name}
+                                        </option>
+                                    ))}
                 </CFormSelect>                
                 <small
                     className="text-muted">
@@ -207,27 +220,30 @@ const EditSectionOne = ({ currentCattle, setCurrentCattle }) =>
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormInput
-                        className="modal-name"
-                        type="date"
-                        placeholder="Register Date of Birth"
-                        value={currentCattle?.Date_Birth || ''}
-                        onChange={(e) => setCurrentCattle({ ...currentCattle, Date_Birth: e.target.value })} />
+                    className="modal-name custom-select"
+                    type="date"
+                    placeholder="Register Date of Birth"
+                    value={currentCattle?.date_birth || ''}
+                    onChange={(e) => setCurrentCattle({ ...currentCattle, date_birth: e.target.value })}/>
                     <small className="text-muted">
                         Please add ate of Birth.
                     </small>
             </CCol>
             <CCol md={6}>
                 <CFormSelect
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Color"
                     aria-label="Color"
-                    value={currentCattle?.color || ''}
-                    onChange={(e) => setCurrentCattle({ ...currentCattle, color: e.target.value })} 
+                    value={currentCattle?.color_cattle || ''}
+                    onChange={(e) => setCurrentCattle({ ...currentCattle, color_cattle: e.target.value })} 
                     >
-                <option value={''}>Color</option>
-                <option value={'Black and White'}>Black and White</option>
-                <option value={'Red and White'}>Red and White</option>
-                <option value={'Dark brown and White'}>Dark brown and White</option>
+                <option value="">Color Cattle</option>
+                                    {colorCattle.map((color) => (
+                                        <option key={color.id}
+                                            value={color.name}>
+                                            {color.name}
+                                        </option>
+                                    ))}
                 </CFormSelect>
                 <small
                     className="text-muted">
@@ -238,28 +254,30 @@ const EditSectionOne = ({ currentCattle, setCurrentCattle }) =>
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormInput
-                        className="modal-name"
-                        placeholder="Weigth"
-                        value={currentCattle?.weigth || ''}
-                        onChange={(e) => setCurrentCattle({ ...currentCattle, weigth: e.target.value })} />
+                        className="modal-name custom-select"
+                        type="number"
+                        placeholder="Weight"
+                        value={currentCattle?.weight || ''}
+                        onChange={(e) => setCurrentCattle({ ...currentCattle, weight: e.target.value })}/>
                     <small className="text-muted">
                         Please add cattle weigth.
                     </small>
             </CCol>
             <CCol md={6}>
                 <CFormSelect
-                    className="modal-name"
+                    className="modal-name custom-select"
                     placeholder="Stage"
                     aria-label="Stage"
                     value={currentCattle?.stage || ''}
                     onChange={(e) => setCurrentCattle({ ...currentCattle, stage: e.target.value })} 
                     >
-                <option value={''}>Stage</option>
-                <option value={'Suckling calf'}>Suckling calf</option>
-                <option value={'Weaned calf'}>Weaned calf</option>
-                <option value={'Calves'}>Calves</option>
-                <option value={'Heifers'}>Heifers</option>
-                <option value={'Cows'}>Cows</option>
+                <option value="">Stage</option>
+                                    {stageCattle.map((stage) => (
+                                        <option key={stage.id}
+                                            value={stage.name}>
+                                            {stage.name}
+                                        </option>
+                                    ))}
                 </CFormSelect>
                 <small
                     className="text-muted">
@@ -270,14 +288,18 @@ const EditSectionOne = ({ currentCattle, setCurrentCattle }) =>
         <CRow className="g-3 mt-2">
             <CCol md={6}>
                 <CFormSelect
-                        className="modal-name"
+                        className="modal-name custom-select"
                         placeholder="Statu Cattle"
                         value={currentCattle?.statu_cattle || ''}
                         onChange={(e) => setCurrentCattle({ ...currentCattle, statu_cattle: e.target.value })} 
                         >
-                <option value={''}>Statu Cattle</option>
-                <option value={'In service'}>In service</option>
-                <option value={'Not in service'}>Not in service</option>
+                <option value="">Status cattle</option>
+                                    {statuCattle.map((statu) => (
+                                        <option key={statu.id}
+                                            value={statu.name}>
+                                            {statu.name}
+                                        </option>
+                                    ))}
                 </CFormSelect>
                     <small className="text-muted">
                         Please add statu cattle.
@@ -288,6 +310,7 @@ const EditSectionOne = ({ currentCattle, setCurrentCattle }) =>
 
 
 const Cattle = () => {
+    const API = helpFetch()
     const [visibleCattle , setVisibleCattle ] = useState(false)
     const [editVisibleCattle, setEditVisibleCattle] = useState(false)
     const [deleteVisibleCattle, setDeleteVisibleCattle] = useState(false)
@@ -295,42 +318,26 @@ const Cattle = () => {
     const [currentEditSectionCattle, setCurrentEditSectionCattle] = useState(0)
     const [currentCattle, setCurrentCattle] = useState(null)
     const [deleteConfirmationCattle, setDeleteConfirmationCattle] = useState('')
-    const [cattle, setCattle] = useState([
-        {
-            cattle_Number: '1001',
-            breed_Bovine: 'Holstein',
-            Date_Birth: '2021-01-15',
-            color: 'Black and White',
-            weigth: '600.50',
-            stage: 'Cows',
-            statu_cattle: 'in service',
-        },
-        {
-            cattle_Number: '1008',
-            breed_Bovine: 'Gyrolandas',
-            Date_Birth: '2022-03-10',
-            color: 'Dark brown and white',
-            weigth: '480.00',
-            stage: 'Heifers',
-            statu_cattle: 'not in service',
-        },
-
-    ])
+    const [cattle, setCattle] = useState([])
+    const [breedBovine, setBreedBovine] = useState([])
+    const [colorCattle, setColorCattle] = useState([])
+    const [stageCattle, setStageCattle] = useState([])
+    const [statuCattle, setStatuCattle] = useState([])
     const [addCattle, setAddCattle] = useState({
-        cattle_Number: '',
-        breed_Bovine: '',
-        Date_Birth: '',
-        color: '',
-        weigth: '',
-        stage: '',
-        statu_cattle: '',
+        cattle_number:  "",
+        breed_bovine: "",
+        date_birth: "",
+        color_cattle: "",
+        weight: "",
+        stage: "",
+        statu_cattle: ""
     
         })
     const sections = [
-        <SectionOne addCattle={addCattle} setAddCattle={setAddCattle} />,
+        <SectionOne addCattle={addCattle} setAddCattle={setAddCattle} breedBovine={breedBovine} colorCattle={colorCattle} stageCattle={stageCattle} statuCattle={statuCattle}/>,
     ]
     const editsections = [
-        <EditSectionOne currentCattle={currentCattle} setCurrentCattle={setCurrentCattle} />,
+        <EditSectionOne currentCattle={currentCattle} setCurrentCattle={setCurrentCattle} breedBovine={breedBovine} colorCattle={colorCattle}stageCattle={stageCattle} statuCattle={statuCattle}/>,
     ]
 
     const handleNext = () => {
@@ -357,58 +364,160 @@ const Cattle = () => {
         }
     };
 
-    const handleAddCattle = () => {
-        setCattle([...cattle, addCattle]);
+    useEffect(() => {
+            const fetchCattle = async () => {
+                try {
+                    const response = await API.get("/cattle");
+                    console.log("Cattle cargados:", response);
+                    setCattle(response);
+                } catch (error) {
+                    console.error("Error al obtener los cattle:", error);
+                }
+            };
+    
+            fetchCattle()
+        }, [])
+
+    useEffect(() => {
+                const fetchBreedBovine = async () => {
+                    try {
+                        const breedBovine= await API.get("/breed_bovine_enum");
+                        console.log("Cattle cargados:", breedBovine);
+                        setBreedBovine(breedBovine);
+                    } catch (error) {
+                        console.error("error al obtener el tipo de breed bovine", error);
+                    }
+                };
+                fetchBreedBovine()
+            }
+            , [])
+
+            useEffect(() => {
+                const fetchColorBo = async () => {
+                    try {
+                        const colorBovine= await API.get("/cattle_color_enum");
+                        console.log("Cattle cargados:", colorBovine);
+                        setColorCattle(colorBovine);
+                    } catch (error) {
+                        console.error("error al obtener el tipo de breed bovine", error);
+                    }
+                };
+                fetchColorBo()
+            }
+            , [])
+
+            useEffect(() => {
+                const fetchStageBo = async () => {
+                    try {
+                        const stage = await API.get("/cattle_stage_enum");
+                        console.log("Etapa Cattle:", stage);
+                        setStageCattle(stage); 
+                    } catch (error) {
+                        console.error("Error al obtener la etapa", error);
+                    }
+                };
+                fetchStageBo();
+            }, []);
+
+            useEffect(() => {
+                const fetchStatuBo = async () => {
+                    try {
+                        const statu = await API.get("/cattle_statu_enum");
+                        console.log("Estado Cattle:", statu);
+                        setStatuCattle(statu); 
+                    } catch (error) {
+                        console.error("Error al obtener el estado", error);
+                    }
+                };
+                fetchStatuBo();
+            }, []);
+
+    const handleAddCattle = async () => {
+                const addedCattle = await API.post("/cattle", {
+                    cattle_number: addCattle.cattle_number,
+                    breed_bovine: addCattle.breed_bovine,
+                    date_birth: addCattle.date_birth,
+                    color_cattle: addCattle.color_cattle,
+                    weight: parseFloat(addCattle.weight),
+                    stage: addCattle.stage,
+                    statu_cattle: addCattle.statu_cattle,
+                })
+                setCattle([...cattle,addedCattle,])
 
         setAddCattle({
-            firts_name: '',
-            Middle_Name: '',
-            Firts_Las_Name: '',
-            Second_Las_Name: '',
-            Document_Number: '',
-            Date_Birth: '',
-            Phone: '',
-            Address: '',
-            Contact_Person: '',
+            cattle_number:  "",
+            breed_bovine: "",
+            date_birth: "",
+            color_cattle: "",
+            weight: "",
+            stage: "",
+            statu_cattle: ""      
         })
         setVisibleCattle(false);
     }
 
-    const handleEditCattle = () => {
-        if (!currentCattle || !currentCattle.cattle_Number) {
-            console.error("No Cattle selected for editing.");
-            return;
+    const handleEditCattle = async () => {
+        if (!currentCattle || !currentCattle.id) {
+            console.error("No cattle selected for editing.")
+            return
         }
+        try {
+            const updatedCattle = await API.put(
+                "/cattle",
+                {
+                    cattle_number: currentCattle.cattle_number,
+                    breed_bovine: currentCattle.breed_bovine,
+                    date_birth: currentCattle.date_birth,
+                    color_cattle: currentCattle.color_cattle,
+                    weight: parseFloat(addCattle.weight),
+                    stage: currentCattle.stage,
+                    statu_cattle: currentCattle.statu_cattle,
+                },  currentCattle.id
+            )
+            setCattle((prevCattle) =>
+                prevCattle.map((cattle) =>
+                    cattle.id === currentCattle.id
+                        ? { ...cattle, ...updatedCattle } : cattle,
+                )
+            ),
+                setEditVisibleCattle(false)
+        } catch (error) {
+            console.error("Error updating cattle:", error)
 
-        const updatedCattle = cattle.map((cattle) => {
-            if (cattle.cattle_Number === currentCattle.cattle_Number) {
-                return { ...cattle, ...currentCattle };
+        }
+    }
+
+    const handleDeleteCattle =async () => {
+        if (deleteConfirmationCattle === "confirm") {
+            const cattleId = currentCattle.id
+            try {
+                const deleteConfirmationCattle =  await API.del("/cattle",cattleId);
+                setCattle(cattle.filter((cattle) => cattle.id !== currentCattle.id))
+                setDeleteVisibleCattle(false)
+            } catch (error) {
+                console.error("Error deleting cattle:", error)
             }
-            return cattle;
-        });
 
-        setCattle(updatedCattle);
-        setEditVisibleCattle(false);
-    }
-
-    const handleDeleteCattle = () => {
-        if (!currentCattle || !currentCattle.cattle_Number) {
-            console.error("No Cattle selected for deletion.");
-            return;
-        }
-
-        if (deleteConfirmationCattle  === 'confirm') {
-            const deleteCattle  = cattle.filter(
-                (cattle) => cattle.cattle_Number !== currentCattle.cattle_Number
-            );
-            setCattle (deleteCattle );
-            setDeleteVisibleCattle (false);
-        }
-        else {
-            console.error("Delete confirmation failed.");
+        } else {
+            console.error("Delete confirmation failed.")
         }
     }
-
+    const bovineBreed = (id) => {
+        const breedEnum = bovineBreed.find((cattleRace) => cattleRace.id === id);
+        return breedEnum ? breedBovine.id : 'Unknown';
+    }; 
+    const colorBo = (id) => {
+        const breedEnum = colorBo.find((bovineColor) => bovineColor.id === id);
+        return breedEnum ? colorCattle.id : 'Unknown';
+    }; 
+    const stageBo = (id) => {
+        const breedEnum = stageBo.find((stageCattle) => stageCattle.id === id);
+        return breedEnum ? stageCattle.id : 'Unknown';
+    }; 
+    const statuBo = (id) => {
+        const breedEnum = statuBo.find((statuCattle) => statuCattle.id === id);
+        return breedEnum ? statuCattle.id : 'Unknown';
+    };
     return (
         <CCard>
             <CCardHeader>
@@ -429,7 +538,7 @@ const Cattle = () => {
                             <CTableHeaderCell className='text-green'> <CIcon icon={cilTags} />Bread Bovine</CTableHeaderCell>
                             <CTableHeaderCell className='text-green'> <CIcon icon={cilCalendar} />Date-Birth</CTableHeaderCell>
                             <CTableHeaderCell className='text-green'> <CIcon icon={cilTag} />Color</CTableHeaderCell>
-                            <CTableHeaderCell className='text-green'> <CIcon icon={cilTags} />Weigth</CTableHeaderCell>
+                            <CTableHeaderCell className='text-green'> <CIcon icon={cilTags} />Weight</CTableHeaderCell>
                             <CTableHeaderCell className='text-green'> <CIcon icon={cilWallet} />Stage</CTableHeaderCell>
                             <CTableHeaderCell className='text-green'> <CIcon icon={cilMobile} />Status Cattle</CTableHeaderCell>
                             <CTableHeaderCell className='text-green'> <CIcon icon={cilPencil} />Actions</CTableHeaderCell>
@@ -437,12 +546,12 @@ const Cattle = () => {
                     </CTableHead>
                     <CTableBody>
                         {cattle.map((cattle) => (
-                            <CTableRow key={cattle.Document_Number}>
-                                <CTableDataCell>{cattle?.cattle_Number || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.breed_Bovine || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.Date_Birth || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.color || ''} </CTableDataCell>
-                                <CTableDataCell>{cattle?.weigth || ''} </CTableDataCell>
+                            <CTableRow key={cattle.id}>
+                                <CTableDataCell>{cattle?.cattle_number || ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.breed_bovine || ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.date_birth || ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.color_cattle|| ''} </CTableDataCell>
+                                <CTableDataCell>{cattle?.weight || ''} </CTableDataCell>
                                 <CTableDataCell>{cattle?.stage || ''} </CTableDataCell>
                                 <CTableDataCell>{cattle?.statu_cattle || ''} </CTableDataCell>
 

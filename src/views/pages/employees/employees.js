@@ -1,4 +1,5 @@
-import react, { useState } from 'react'
+import react, { useState, useEffect  } from 'react'
+import { helpFetch } from "src/helpper/helpFetch.js"
 import CIcon from '@coreui/icons-react';
 import {
   cilPlus,
@@ -44,11 +45,11 @@ const SectionOne = ({ addEmployee, setAddEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="First Name"
           aria-label="First Name"
-          value={addEmployee.firts_name}
-          onChange={(e) => setAddEmployee({ ...addEmployee, firts_name: e.target.value })}
+          value={addEmployee.first_name}
+          onChange={(e) => setAddEmployee({ ...addEmployee, first_name: e.target.value })}
         />
         <small
           className="text-muted">
@@ -58,11 +59,11 @@ const SectionOne = ({ addEmployee, setAddEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Middle Name"
           aria-label="Middle Name"
-          value={addEmployee.Middle_Name}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Middle_Name: e.target.value })}
+          value={addEmployee.middle_name}
+          onChange={(e) => setAddEmployee({ ...addEmployee, middle_name: e.target.value })}
         />
 
         <small
@@ -74,11 +75,11 @@ const SectionOne = ({ addEmployee, setAddEmployee }) =>
     <CRow className="employees-las-name g-3 mt-2">
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="First Last-Name"
           aria-label="First Last-Name"
-          value={addEmployee.Firts_Las_Name}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Firts_Las_Name: e.target.value })} />
+          value={addEmployee.first_lasname}
+          onChange={(e) => setAddEmployee({ ...addEmployee, first_lasname: e.target.value })} />
         <small
           className="text-muted">
           Please add your firts last-name.
@@ -87,11 +88,11 @@ const SectionOne = ({ addEmployee, setAddEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Second Last-Name"
           aria-label="Second Last-Name"
-          value={addEmployee.Second_Las_Name}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Second_Las_Name: e.target.value })} />
+          value={addEmployee.second_lasname}
+          onChange={(e) => setAddEmployee({ ...addEmployee, second_lasname: e.target.value })} />
         <small
           className="text-muted">
           Please add your second last-name.
@@ -101,7 +102,7 @@ const SectionOne = ({ addEmployee, setAddEmployee }) =>
 
   </div>;
 
-const SectionTwo = ({ addEmployee, setAddEmployee }) =>
+const SectionTwo = ({ addEmployee, setAddEmployee, position}) =>
   <div>
     <CRow className="g-3 mt-2">
       <h4 className='text-green mt-1 me-5'>
@@ -109,11 +110,11 @@ const SectionTwo = ({ addEmployee, setAddEmployee }) =>
       </h4>
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Document Number"
           aria-label="Document Number"
-          value={addEmployee.Document_Number}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Document_Number: e.target.value })} />
+          value={addEmployee.document_number}
+          onChange={(e) => setAddEmployee({ ...addEmployee, document_number: e.target.value })} />
         <small
           className="text-muted">
           Please add your document number.
@@ -121,11 +122,11 @@ const SectionTwo = ({ addEmployee, setAddEmployee }) =>
       </CCol>
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           type="date"
           placeholder="register"
-          value={addEmployee.Date_Birth}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Date_Birth: e.target.value })} />
+          value={addEmployee.date_birth}
+          onChange={(e) => setAddEmployee({ ...addEmployee, date_birth: e.target.value })} />
         <small className="text-muted">
           Please add your date of Birth.
         </small>
@@ -135,11 +136,11 @@ const SectionTwo = ({ addEmployee, setAddEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Phone"
           aria-label="Phone"
-          value={addEmployee.Phone}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Phone: e.target.value })} />
+          value={addEmployee.phone}
+          onChange={(e) => setAddEmployee({ ...addEmployee, phone: e.target.value })} />
         <small
           className="text-muted">
           Please add your phone.
@@ -149,11 +150,11 @@ const SectionTwo = ({ addEmployee, setAddEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Address"
           aria-label="Address"
-          value={addEmployee.Address}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Address: e.target.value })} />
+          value={addEmployee.address}
+          onChange={(e) => setAddEmployee({ ...addEmployee, address: e.target.value })} />
         <small
           className="text-muted">
           Please add your address.
@@ -163,11 +164,11 @@ const SectionTwo = ({ addEmployee, setAddEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           type='date'
           placeholder="Date Contrate "
-          value={addEmployee.Date_contrate}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Date_contrate: e.target.value })} />
+          value={addEmployee.contract_date}
+          onChange={(e) => setAddEmployee({ ...addEmployee, contract_date: e.target.value })} />
         <small
           className="text-muted">
           Please add your contrate date.
@@ -176,19 +177,19 @@ const SectionTwo = ({ addEmployee, setAddEmployee }) =>
 
       <CCol md={6}>
         <CFormSelect
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Position"
           aria-label="Position"
-          value={addEmployee.Position}
-          onChange={(e) => setAddEmployee({ ...addEmployee, Position: e.target.value })} 
+          value={addEmployee.position}
+          onChange={(e) => setAddEmployee({ ...addEmployee, position: e.target.value })} 
           >
-          <option value="">Select Position</option>
-          <option value="Manager">Manager</option>
-          <option value="Dairy Manager">Dairy Manager</option>
-          <option value="Veterinary">Veterinary</option>
-          <option value="Transportation Manager">Transportation Manager</option>
-          <option value="Worker">Worker</option>
-          <option value="Pasture Manager">Pasture Manager</option>
+            <option value="">Position</option>
+                                    {position.map((emp) => (
+                                        <option key={emp.id}
+                                            value={emp.name_position}>
+                                            {emp.name_position}
+                                        </option>
+                                    ))}
         </CFormSelect>
         <small
           className="text-muted">
@@ -208,11 +209,11 @@ const EditSectionOne = ({ currentEmployee, setCurrentEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="First Name"
           aria-label="First Name"
-          value={currentEmployee?.firts_name || ''}
-          onChange={(e) => setCurrentEmployee({ ...currentEmployee, firts_name: e.target.value })} />
+          value={currentEmployee?.first_name || ''}
+          onChange={(e) => setCurrentEmployee({ ...currentEmployee, first_name: e.target.value })} />
         <small
           className="text-muted">
           Please add your firts name.
@@ -221,11 +222,11 @@ const EditSectionOne = ({ currentEmployee, setCurrentEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Middle Name"
           aria-label="Middle Name"
-          value={currentEmployee?.Middle_Name || ''}
-          onChange={(e) => setCurrentEmployee({ ...currentEmployee, Middle_Name: e.target.value })} />
+          value={currentEmployee?.middle_name || ''}
+          onChange={(e) => setCurrentEmployee({ ...currentEmployee, middle_name: e.target.value })} />
         <small
           className="text-muted">
           Please add your middle name.
@@ -235,11 +236,11 @@ const EditSectionOne = ({ currentEmployee, setCurrentEmployee }) =>
       <CRow className="employees-las-name g-3 mt-2">
         <CCol md={6}>
           <CFormInput
-            className="modal-name"
+            className="modal-name custom-select"
             placeholder="First Last-Name"
             aria-label="First Last-Name"
-            value={currentEmployee?.Firts_Las_Name || ''}
-            onChange={(e) => setCurrentEmployee({ ...currentEmployee, Firts_Las_Name: e.target.value })} />
+            value={currentEmployee?.first_lasname || ''}
+            onChange={(e) => setCurrentEmployee({ ...currentEmployee, first_lasname: e.target.value })} />
           <small
             className="text-muted">
             Please add your firts last-name.
@@ -248,11 +249,11 @@ const EditSectionOne = ({ currentEmployee, setCurrentEmployee }) =>
 
         <CCol md={6}>
           <CFormInput
-            className="modal-name"
+            className="modal-name custom-select"
             placeholder="Second Last-Name"
             aria-label="Second Last-Name"
-            value={currentEmployee?.Second_Las_Name || ''}
-            onChange={(e) => setCurrentEmployee({ ...currentEmployee, Second_Las_Name: e.target.value })} />
+            value={currentEmployee?.second_lasname || ''}
+            onChange={(e) => setCurrentEmployee({ ...currentEmployee, second_lasname: e.target.value })} />
           <small
             className="text-muted">
             Please add your second last-name.
@@ -262,7 +263,7 @@ const EditSectionOne = ({ currentEmployee, setCurrentEmployee }) =>
     </CRow>
   </div>;
 
-const EditSectionTwo = ({ currentEmployee, setCurrentEmployee }) =>
+const EditSectionTwo = ({ currentEmployee, setCurrentEmployee, position}) =>
   <div>
     <CRow className="g-3 mt-2">
       <h4 className='text-green mt-1 me-5'>
@@ -270,11 +271,11 @@ const EditSectionTwo = ({ currentEmployee, setCurrentEmployee }) =>
       </h4>
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Document Number"
           aria-label="Document Number"
-          value={currentEmployee?.Document_Number || ''}
-          onChange={(e) => setCurrentEmployee({ ...currentEmployee, Document_Number: e.target.value })} />
+          value={currentEmployee?.document_number || ''}
+          onChange={(e) => setCurrentEmployee({ ...currentEmployee, document_number: e.target.value })} />
         <small
           className="text-muted">
           Please add your document number.
@@ -282,11 +283,11 @@ const EditSectionTwo = ({ currentEmployee, setCurrentEmployee }) =>
       </CCol>
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           type="date"
           placeholder="register"
-          value={currentEmployee?.Date_Birth || ''}
-          onChange={(e) => setCurrentEmployee({ ...currentEmployee, Date_Birth: e.target.value })} />
+          value={currentEmployee?.date_birth || ''}
+          onChange={(e) => setCurrentEmployee({ ...currentEmployee, date_birth: e.target.value })} />
         <small
           className="text-muted">
           Please add your date of Birth.
@@ -296,11 +297,11 @@ const EditSectionTwo = ({ currentEmployee, setCurrentEmployee }) =>
     <CRow className="employees-las-name g-3 mt-2">
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Phone"
           aria-label="Phone"
-          value={currentEmployee?.Phone || ''}
-          onChange={(e) => setCurrentEmployee({ ...currentEmployee, Phone: e.target.value })} />
+          value={currentEmployee?.phone || ''}
+          onChange={(e) => setCurrentEmployee({ ...currentEmployee, phone: e.target.value })} />
         <small
           className="text-muted">
           Please add your phone.
@@ -309,11 +310,11 @@ const EditSectionTwo = ({ currentEmployee, setCurrentEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Address"
           aria-label="Address"
-          value={currentEmployee?.Address || ''}
-          onChange={(e) => setCurrentEmployee({ ...currentEmployee, Address: e.target.value })} />
+          value={currentEmployee?.address || ''}
+          onChange={(e) => setCurrentEmployee({ ...currentEmployee, address: e.target.value })} />
         <small
           className="text-muted">
           Please add your address.
@@ -322,11 +323,11 @@ const EditSectionTwo = ({ currentEmployee, setCurrentEmployee }) =>
 
       <CCol md={6}>
         <CFormInput
-          className="modal-name"
+          className="modal-name custom-select"
           type='date'
           placeholder="Date Contrate "
-          value={currentEmployee?.Date_contrate || ''}
-          onChange={(e) => setCurrentEmployee({ ...currentEmployee, Date_contrate: e.target.value })} />
+          value={currentEmployee?.contract_date || ''}
+          onChange={(e) => setCurrentEmployee({ ...currentEmployee, contract_date: e.target.value })} />
         <small
           className="text-muted">
           Please add your date contrate.
@@ -334,19 +335,19 @@ const EditSectionTwo = ({ currentEmployee, setCurrentEmployee }) =>
       </CCol>
       <CCol md={6}>
         <CFormSelect
-          className="modal-name"
+          className="modal-name custom-select"
           placeholder="Position"
           aria-label="Position"
-          value={currentEmployee?.Position || ''}
-          onChange={(e) => setAddEmployee({ ...currentEmployee, Position: e.target.value })} 
+          value={currentEmployee?.position || ''}
+          onChange={(e) => setCurrentEmployee({ ...currentEmployee, position: e.target.value })} 
           >
-          <option value="">Select Position</option>
-          <option value="Manager">Manager</option>
-          <option value="Dairy Manager">Dairy Manager</option>
-          <option value="Veterinary">Veterinary</option>
-          <option value="Transportation Manager">Transportation Manager</option>
-          <option value="Worker">Worker</option>
-          <option value="Pasture Manager">Pasture Manager</option>
+            <option value="">Position</option>
+                                    {position.map((emp) => (
+                                        <option key={emp.id}
+                                            value={emp.name_position}>
+                                            {emp.name_position}
+                                        </option>
+                                    ))}
         </CFormSelect>
         <small
           className="text-muted">
@@ -358,6 +359,7 @@ const EditSectionTwo = ({ currentEmployee, setCurrentEmployee }) =>
 
 
 const employees = () => {
+  const API = helpFetch()
   const [visible, setVisible] = useState(false)
   const [editVisible, setEditVisible] = useState(false)
   const [deleteVisible, setDeleteVisible] = useState(false)
@@ -365,54 +367,29 @@ const employees = () => {
   const [currentEditSection, setEditCurrentSection] = useState(0)
   const [currentEmployee, setCurrentEmployee] = useState(null)
   const [deleteConfirmation, setDeleteConfirmation] = useState('')
+  const [position, setPosition] = useState([])
   const [employee, setEmployee] = useState([
-
-    {
-      firts_name: 'Carlos',
-      Middle_Name: 'Eduardo',
-      Firts_Las_Name: 'Moreno',
-      Second_Las_Name: 'Andrade',
-      Document_Number: '2145647987',
-      Date_Birth: '09/09/1984',
-      Phone: '0424-1234567',
-      Address: 'La Grita',
-      Date_contrate: '09/09/2023',
-      Position: 'Manager'
-
-    },
-    {
-      firts_name: 'Luis',
-      Middle_Name: 'Eduardo',
-      Firts_Las_Name: 'Moreno',
-      Second_Las_Name: 'Andrade',
-      Document_Number: '13762893',
-      Date_Birth: '11/10/1970',
-      Phone: '04247580322',
-      Address: 'Pueblo Hondo',
-      Date_contrate: '05/06/2005',
-      Position: 'Veterinary'
-    },
-
   ])
   const [addEmployee, setAddEmployee] = useState({
-    firts_name: '',
-    Middle_Name: '',
-    Firts_Las_Name: '',
-    Second_Las_Name: '',
-    Document_Number: '',
-    Date_Birth: '',
-    Phone: '',
-    Address: '',
-    Contact_Person: '',
+    first_name: '',
+    middle_name: '',
+    first_lasname: '',
+    second_lasname: '',
+    document_number: '',
+    date_birth: '',
+    phone: '',
+    address: '',
+    contract_date: '',
+    position: '',
 
   })
   const sections = [
-    <SectionOne addEmployee={addEmployee} setAddEmployee={setAddEmployee} />,
-    <SectionTwo addEmployee={addEmployee} setAddEmployee={setAddEmployee} />,
+    <SectionOne addEmployee={addEmployee} setAddEmployee={setAddEmployee} position={position}  />,
+    <SectionTwo addEmployee={addEmployee} setAddEmployee={setAddEmployee} position={position} />,
   ]
   const editsections = [
-    <EditSectionOne currentEmployee={currentEmployee} setCurrentEmployee={setCurrentEmployee} />,
-    <EditSectionTwo currentEmployee={currentEmployee} setCurrentEmployee={setCurrentEmployee} />
+    <EditSectionOne currentEmployee={currentEmployee} setCurrentEmployee={setCurrentEmployee}  position={position}/>,
+    <EditSectionTwo currentEmployee={currentEmployee} setCurrentEmployee={setCurrentEmployee}  position={position}/>
   ]
 
   const handleNext = () => {
@@ -439,57 +416,115 @@ const employees = () => {
     }
   };
 
-  const handleAddEmployee = () => {
-    setEmployee([...employee, addEmployee]);
+  useEffect(() => {
+    const fetchEmployye = async () => {
+        try {
+            const response = await API.get("/employees");
+            console.log("empleados cargados:", response);
+            setEmployee(response);
+        } catch (error) {
+            console.error("Error al obtener los empleados:", error);
+        }
+    };
+
+    fetchEmployye()
+}, [])
+
+useEffect(() => {
+    const fetchPosition = async () => {
+        try {
+            const employee_position = await API.get("/employees_position_enum");
+            setPosition(employee_position);
+        } catch (error) {
+            console.error("error al obtener la posicion del empleado", error);
+        }
+    } 
+    fetchPosition()
+}
+, [])
+
+  const handleAddEmployee = async () => {
+      const addedEmployee = await API.post("/employees", {
+          first_name: addEmployee.first_name,
+          middle_name: addEmployee.middle_name,
+          first_lasname: addEmployee.first_lasname,
+          second_lasname: addEmployee.second_lasname,
+          document_number: addEmployee.document_number,
+          date_birth: addEmployee.date_birth,
+          phone: addEmployee.phone,
+          address: addEmployee.address,
+          contract_date: addEmployee.contract_date,
+          position: addEmployee.position,
+
+          
+      })
+      setEmployee([...employee,addedEmployee,])
 
     setAddEmployee({
-      firts_name: '',
-      Middle_Name: '',
-      Firts_Las_Name: '',
-      Second_Las_Name: '',
-      Document_Number: '',
-      Date_Birth: '',
-      Phone: '',
-      Address: '',
-      Contact_Person: '',
+      first_name: '',
+      middle_name: '',
+      first_lasname: '',
+      second_lasname: '',
+      document_number: '',
+      date_birth: '',
+      phone: '',
+      address: '',
+      contract_date: '',
+      position: '',
     })
     setVisible(false);
   }
 
-  const handleEditEmployee = () => {
-    if (!currentEmployee || !currentEmployee.Document_Number) {
-      console.error("No employee selected for editing.");
-      return;
+  const handleEditEmployee = async () => {
+    if (!currentEmployee || !currentEmployee.id) {
+        console.error("No employee selected for editing.")
+        return
     }
+    try {
+        const updatedEmployee = await API.put(
+            "/employees",
+            {
+                id: currentEmployee.id,
+                first_name: currentEmployee.first_name,
+                middle_name: currentEmployee.middle_name,
+                first_lasname: currentEmployee.first_lasname,
+                second_lasname: currentEmployee.second_lasname,
+                document_number: currentEmployee.document_number,
+                date_birth: currentEmployee.date_birth,
+                phone: currentEmployee.phone,
+                address: currentEmployee.address,
+                contract_date: currentEmployee.contract_date,
+                position: currentEmployee.position,
+            },  currentEmployee.id
+        )
+        setEmployee((prevEmployee) =>
+            prevEmployee.map((employee) =>
+                employee.id === currentEmployee.id
+                    ? { ...employee, ...updatedEmployee } : employee,
+            )
+        ),
+            setEditVisible(false)
+    } catch (error) {
+        console.error("Error updating employee:", error)
 
-    const updatedEmployee = employee.map((emp) => {
-      if (emp.Document_Number === currentEmployee.Document_Number) {
-        return { ...emp, ...currentEmployee };
+    }
+}
+
+const handleDeleteEmployee =async () => {
+  if (deleteConfirmation === "confirm") {
+      const employeeId = currentEmployee.id
+      try {
+          const deleteVisible =  await API.del("/employees",employeeId);
+          setEmployee(employee.filter((employee) => employee.id !== currentEmployee.id))
+          setDeleteVisible(false)
+      } catch (error) {
+          console.error("Error deleting employee:", error)
       }
-      return emp;
-    });
 
-    setEmployee(updatedEmployee);
-    setEditVisible(false);
+  } else {
+      console.error("Delete confirmation failed.")
   }
-
-  const handleDeleteEmployee = () => {
-    if (!currentEmployee || !currentEmployee.Document_Number) {
-      console.error("No employee selected for deletion.");
-      return;
-    }
-
-    if (deleteConfirmation === 'confirm') {
-      const deleteEmployee = employee.filter(
-        (emp) => emp.Document_Number !== currentEmployee.Document_Number
-      );
-      setEmployee(deleteEmployee);
-      setDeleteVisible(false);
-    }
-    else {
-      console.error("Delete confirmation failed.");
-    }
-  }
+}
 
   return (
     <CCard>
@@ -522,17 +557,17 @@ const employees = () => {
           </CTableHead>
           <CTableBody>
             {employee.map((employees) => (
-              <CTableRow key={employees.Document_Number}>
-                <CTableDataCell>{employees?.firts_name || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Middle_Name || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Firts_Las_Name || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Second_Las_Name || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Document_Number || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Date_Birth || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Phone || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Address || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Date_contrate || ''} </CTableDataCell>
-                <CTableDataCell>{employees?.Position || ''} </CTableDataCell>
+              <CTableRow key={employees.id}>
+                <CTableDataCell>{employees?.first_name || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.middle_name || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.first_lasname || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.second_lasname || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.document_number || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.date_birth || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.phone || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.address || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.contract_date || ''} </CTableDataCell>
+                <CTableDataCell>{employees?.position || ''} </CTableDataCell>
 
                 <CTableDataCell>
                   <div className='d-flex'>

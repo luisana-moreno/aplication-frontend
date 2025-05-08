@@ -2,9 +2,8 @@ import { element } from 'prop-types'
 import React from 'react'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
-const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 const Employee = React.lazy(()=> import('./views/pages/employees/employees'))
-const Users = React.lazy(() => import('./views/pages/users/users'))
+const Users = React.lazy(() => import('./views/pages/users/users.js'))
 const Cattle = React.lazy(() => import('./views/pages/cattle/cattle'))
 const Vaccination = React.lazy(() => import('./views/pages/cattle/vaccination'))
 const Client = React.lazy(() => import('./views/pages/client/client'))
@@ -26,5 +25,5 @@ const routes = [
   { path: '/finance', name: 'finance', element: Finance},
   { path: '/inventory', name: 'inventory', element: Inventory},
 
- ]
+]
 export default routes
