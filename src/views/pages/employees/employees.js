@@ -7,7 +7,7 @@ import {
   cilTags,
   cilWallet,
   cilCalendar,
-  cilMobile,
+  cilMobile, 
   cilLocationPin,
   cilContact,
   cilPencil,

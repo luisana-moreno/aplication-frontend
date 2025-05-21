@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { helpFetch } from "src/helpper/helpFetch.js"
 import CIcon from "@coreui/icons-react"
 import { cilPlus, cilTag, cilTags, cilWallet, cilMobile, cilLocationPin, cilContact, cilPencil } from "@coreui/icons"
@@ -9,7 +9,7 @@ import {
     CCardHeader,
     CCol,
     CFormInput,
-    CRow,
+    CRow, 
     CTable,
     CTableDataCell,
     CTableHead,
@@ -21,6 +21,7 @@ import {
     CModalBody,
     CModalFooter,
     CModalTitle,
+    CTableHeaderCell,
 } from "@coreui/react"
 const SectionOne = ({ addUser, setAddUser, userPosition }) => (
     <div>
@@ -52,7 +53,7 @@ const SectionOne = ({ addUser, setAddUser, userPosition }) => (
             <CCol md={6}>
                 <CFormInput
                     className="modal-name custom-select"
-                    type="email"
+                    type="email" 
                     placeholder="Email"
                     aria-label="Email"
                     value={addUser?.email || ""}
@@ -163,11 +164,11 @@ const users = () => {
     })
 
     const sections = [
-        <SectionOne key="section-one" addUser={addUser} setAddUser={setAddUser} userPosition={userPosition} />,
+        <SectionOne addUser={addUser} setAddUser={setAddUser} userPosition={userPosition} />,
     ]
 
     const editsections = [
-        <EditSectionOne key="edit-section-one" currentUser={currentUser} setCurrentUser={setCurrentUser} userPosition={userPosition} />,
+        <EditSectionOne  currentUser={currentUser} setCurrentUser={setCurrentUser} userPosition={userPosition} />,
     ]
 
     const handleNext = () => {
@@ -314,12 +315,12 @@ return (
                     </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                    {user.map((user) => (
-                        <CTableRow key={user.id}>
-                            <CTableDataCell>{user?.first_name || ''} </CTableDataCell>
-                            <CTableDataCell>{user?.first_lasname || ''} </CTableDataCell>
-                            <CTableDataCell>{user?.email || ''} </CTableDataCell>
-                            <CTableDataCell>{user?.rol || ''} </CTableDataCell>
+                    {user.map((Users) => (
+                        <CTableRow key={users.id}>
+                            <CTableDataCell>{users?.first_name || ''} </CTableDataCell>
+                            <CTableDataCell>{users?.first_lasname || ''} </CTableDataCell>
+                            <CTableDataCell>{users?.email || ''} </CTableDataCell>
+                            <CTableDataCell>{users?.rol || ''} </CTableDataCell>
                             <CTableDataCell>
                                 <div className='d-flex'>
                                     <CButton
@@ -372,20 +373,6 @@ return (
             <CModalFooter>
                 <CButton
                     className='button-no-hover-green text-white'
-                    onClick={handlePrevious}
-                    disabled={currentSectionUser === 0}>
-                    Fomer
-                </CButton>
-
-                <CButton
-                    className='button-no-hover-green text-white'
-                    onClick={handleNext}
-                    disabled={currentSectionUser === sections.length - 1}>
-                    Next
-                </CButton>
-
-                <CButton
-                    className='button-no-hover-green text-white'
                     onClick={handleAddUser}>
                     Add
                 </CButton>
@@ -413,19 +400,6 @@ return (
             </CModalBody>
 
             <CModalFooter>
-                <CButton
-                    className='button-no-hover-green text-white'
-                    onClick={handlePreviousEdit}
-                    disabled={currentEditSectionUser === 0}>
-                    Previos
-                </CButton>
-
-                <CButton
-                    className='button-no-hover-green text-white'
-                    onClick={handleNextEdit}
-                    disabled={currentEditSectionUser === sections.length - 1}>
-                    Next
-                </CButton>
 
                 <CButton
                     className='button-no-hover-green text-white'

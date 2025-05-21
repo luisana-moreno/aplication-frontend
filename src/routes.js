@@ -23,6 +23,7 @@ const routes = [
   { path: '/client', name: 'client', element: Client},
   { path: '/finance', name: 'finance', element: Finance},
   { path: '/inventory', name: 'inventory', element: Inventory},
+  { path: '/users', name: 'Users', element: Users},
 
 ]
 export default routes

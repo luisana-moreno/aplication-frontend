@@ -300,6 +300,18 @@
       "phone": "111",
       "address": "111",
       "email": "jjj"
+    },
+    {
+      "id": "0684",
+      "client_type": "",
+      "company_name": "",
+      "first_name": "",
+      "first_lasname": "",
+      "document_number": "",
+      "rif": "",
+      "phone": "",
+      "address": "",
+      "email": ""
     }
   ],
   "cattle": [
